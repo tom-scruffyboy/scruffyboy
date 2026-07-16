@@ -21,17 +21,17 @@ Companion to `KLAVIYO.md` (email machine runbook).
 
 ## At domain purchase (do these the same day)
 
-1. Point `scruffyboy.co` at the host; set the **canonical/OG URLs** are already written for it.
+1. Point `scruffyboy.com` at the host; set the **canonical/OG URLs** are already written for it.
 2. **Google Search Console**: verify the domain (DNS TXT), submit `sitemap.xml`.
-3. **Klaviyo dedicated sending domain** (send.scruffyboy.co) + set sender name to scruffyboy — single biggest deliverability lever. SPF/DKIM/DMARC records come from Klaviyo's wizard.
-4. `hello@scruffyboy.co` mailbox (Google Workspace alias is fine) — it's already printed on the site and in emails.
+3. **Klaviyo dedicated sending domain** (send.scruffyboy.com) + set sender name to scruffyboy — single biggest deliverability lever. SPF/DKIM/DMARC records come from Klaviyo's wizard.
+4. `hello@scruffyboy.com` mailbox (Google Workspace alias is fine) — it's already printed on the site and in emails.
 
 ## Hosting — LIVE
 
 - **Repo**: `tom-scruffyboy/scruffyboy` on GitHub (brand account; local remote pinned to that user so the keychain's other credential can't hijack pushes).
 - **Vercel**: project `scruffyboy-site` in team `scruffyboy` (Hobby), production = `main`. Live at **https://scruffyboy-site.vercel.app** — every `git push` auto-deploys; branches get preview URLs.
 - 404 is served from `404.html` automatically; no build step, no config file.
-- When `scruffyboy.co` is bought: Vercel project → Settings → Domains → add it (Vercel gives the DNS records).
+- When `scruffyboy.com` is bought: Vercel project → Settings → Domains → add it (Vercel gives the DNS records).
 - Note: the team also contains an older project named `scruffyboy` (from a v0 session) — unrelated to this site; keep or delete in the Vercel dashboard.
 
 ## Shopify (launch phase)
@@ -39,7 +39,7 @@ Companion to `KLAVIYO.md` (email machine runbook).
 **What exists today**: Basic-plan store `e0scrm-cg.myshopify.com` (HKD, Hong Kong) — zero products, still named "My Store", timezone set to EDT (fix to HKT in Shopify settings).
 
 Recommended path for a small DTC line:
-1. **Keep this site as the brand/marketing layer** and build the store as the Shopify online store on the same domain — `scruffyboy.co` stays the landing until launch day, then either (a) the Shopify storefront takes over the apex domain with a custom theme built from the design system (components already exist as `.jsx` in the Claude Design project), or (b) the store lives at `shop.scruffyboy.co` and this site's CTAs switch from email capture to "get the goods" → shop links.
+1. **Keep this site as the brand/marketing layer** and build the store as the Shopify online store on the same domain — `scruffyboy.com` stays the landing until launch day, then either (a) the Shopify storefront takes over the apex domain with a custom theme built from the design system (components already exist as `.jsx` in the Claude Design project), or (b) the store lives at `shop.scruffyboy.com` and this site's CTAs switch from email capture to "get the goods" → shop links.
 2. Option (b) is lower-risk for launch week (no domain cutover), and the design system's Header/ProductCard/CartDrawer components map 1:1 onto a Shopify theme when you're ready for (a).
 3. Product naming per brand: lowercase noun phrases — "dirt & salt rinse", "post-swim wipes", "the hydrant".
 4. Klaviyo ↔ Shopify integration (one click in Klaviyo) unlocks abandoned-cart, post-purchase, and back-in-stock flows plus revenue attribution — turn this on before the first order, not after.
