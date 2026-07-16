@@ -29,6 +29,17 @@ revision: 2026-07-15
   the subscriber only becomes marketing-consented after clicking it.
   (Verified end-to-end: submissions → 202 → confirmation emails delivered.)
 
+## Welcome flow — LIVE ✅
+
+Flow **pre-launch welcome** (`Rwn4mS`) is live as of Jul 16, 2026:
+trigger *Added to list Umf2ZE* (no re-entry) → **welcome 1** (immediate, Smart Sending OFF, UTM on)
+→ wait 3 days → **welcome 2** (Day 3) → wait 4 days → **welcome 3** (Day 7).
+All three emails send as **scruffyboy** (sender email still te@hvngroup.co until the
+sending domain exists). UTM tracking on for all three, so clicks attribute in GA4.
+Flow URL: https://www.klaviyo.com/flow/Rwn4mS/edit
+
+The original assembly notes below are kept for reference.
+
 ## Welcome flow — templates are built, assembly is ~5 min in the UI
 
 Templates (already in the account, on-brand, with unsubscribe links):
@@ -63,11 +74,11 @@ day 3 → day 7 is the standard cadence, one job per email, never >1/day.
 - [ ] **Set the opt-in confirmation redirect** to the site's `confirmed.html`
       (same settings page → "confirmation page" → custom URL) so the
       click-to-confirm lands on-brand instead of Klaviyo's hosted page.
-- [ ] **Sender identity**: account default is currently `Hvngroup
-      <te@hvngroup.co>`. Before real traffic: set sender name to `scruffyboy`,
-      and once the domain exists, add a **dedicated sending domain**
+- [x] **Sender name** set to `scruffyboy` on all three flow emails (Jul 16).
+      Still to do once the domain exists: add a **dedicated sending domain**
       (e.g. send.scruffyboy.co) in Klaviyo → Settings → Email — this is the
-      single biggest deliverability lever.
+      single biggest deliverability lever — and update sender email from
+      te@hvngroup.co.
 - [ ] Update the `https://scruffyboy.co` link in template 3 and `canonical`/OG
       URLs in the site when the real domain is live.
 
