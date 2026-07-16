@@ -68,18 +68,22 @@ day 3 → day 7 is the standard cadence, one job per email, never >1/day.
 
 ## Manual UI checklist (one-time)
 
-- [ ] **Brand the double opt-in confirmation email** — Lists → the waitlist →
-      Settings → Consent / double opt-in. Default copy is generic Klaviyo.
-      Suggested subject: `one click and you're in.`
-- [ ] **Set the opt-in confirmation redirect** to the site's `confirmed.html`
-      (same settings page → "confirmation page" → custom URL) so the
-      click-to-confirm lands on-brand instead of Klaviyo's hosted page.
+- [x] **Double opt-in confirmation email branded** (Jul 16): subject
+      `one click and you're in.`, heading matches, button is an orange
+      (#FF6B35) pill reading `yes, save my spot`. Verified via a live test
+      signup — the delivered email carries all of it. Pages are list-specific
+      (Consent pages → customized for this list), account defaults untouched.
+- [x] **Post-confirmation page branded** (Jul 16): Klaviyo's new consent-pages
+      editor has no custom-URL redirect, so the hosted success page itself was
+      branded instead — cream card on near-black, heading `you're in.
+      officially.`, Moose copy. Same outcome as redirecting to confirmed.html
+      (which stays on the site, unused by this path).
 - [x] **Sender name** set to `scruffyboy` on all three flow emails (Jul 16).
       Still to do once the domain exists: add a **dedicated sending domain**
-      (e.g. send.scruffyboy.co) in Klaviyo → Settings → Email — this is the
+      (e.g. send.scruffyboy.com) in Klaviyo → Settings → Email — this is the
       single biggest deliverability lever — and update sender email from
       te@hvngroup.co.
-- [ ] Update the `https://scruffyboy.co` link in template 3 and `canonical`/OG
+- [ ] Update the `https://scruffyboy.com` link in template 3 and `canonical`/OG
       URLs in the site when the real domain is live.
 
 ## At launch
