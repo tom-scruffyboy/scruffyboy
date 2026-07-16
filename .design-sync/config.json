@@ -1,0 +1,7 @@
+{
+  "projectId": "286ea0f0-8ac1-4e3d-a8d1-7e84168720cd",
+  "projectName": "scruffyboy design system",
+  "shape": "handoff-export",
+  "source": "Scruffyboy Brand Guidelines-handoff.zip",
+  "note": "Off-script sync. Source is a Claude Design handoff export (already authored as a DS: components/.jsx+.d.ts+.prompt.md, .card.html with @dsCard markers, tokens/, styles.css, ds-loader.js). Not a buildable repo, so the converter does not apply; files are uploaded as-is. See NOTES.md."
+}

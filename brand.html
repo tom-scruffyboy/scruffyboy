@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>scruffyboy — brand guidelines v1.0</title>
+<meta name="description" content="scruffyboy brand guidelines — grooming goods for dirty dogs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FF6B35'/%3E%3Ctext x='32' y='46' font-family='Fredoka,sans-serif' font-weight='600' font-size='40' fill='%23F7F0E1' text-anchor='middle' transform='rotate(-5 32 32)'%3Es%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --cream:#F7F0E1;
+    --orange:#FF6B35;
+    --black:#161310;
+    --deep:#E24E17;
+    --ink-70:rgba(22,19,16,.7);
+    --ink-65:rgba(22,19,16,.65);
+    --ink-50:rgba(22,19,16,.5);
+    --ink-45:rgba(22,19,16,.45);
+    --ink-15:rgba(22,19,16,.15);
+    --ink-12:rgba(22,19,16,.12);
+    --ink-08:rgba(22,19,16,.08);
+    --mono:ui-monospace,Menlo,"SF Mono",monospace;
+    --display:"Fredoka",sans-serif;
+    --body:Helvetica,Arial,sans-serif;
+    --maxw:960px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--black);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  a{color:var(--deep);text-decoration:none}
+  a:hover{color:var(--black)}
+  img{max-width:100%;display:block}
+  h1,h2,p{margin:0}
+  ul,ol{margin:0}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+  /* --- kinetic wordmark --- */
+  .km{font-family:var(--display);font-weight:600;letter-spacing:-.01em;line-height:1;white-space:nowrap;display:inline-block}
+  .km span{display:inline-block}
+  .km span:nth-child(1){transform:rotate(-5deg) translateY(.02em)}
+  .km span:nth-child(2){transform:rotate(4deg) translateY(-.05em)}
+  .km span:nth-child(3){transform:rotate(2deg) translateY(.01em)}
+  .km span:nth-child(4){transform:rotate(-4deg) translateY(.04em)}
+  .km span:nth-child(5){transform:rotate(5deg) translateY(-.04em)}
+  .km span:nth-child(6){transform:rotate(-3deg) translateY(.02em)}
+  .km span:nth-child(7){transform:rotate(4deg) translateY(-.05em)}
+  .km span:nth-child(8){transform:rotate(-4deg) translateY(.04em)}
+  .km span:nth-child(9){transform:rotate(3deg) translateY(-.03em)}
+  .km span:nth-child(10){transform:rotate(-5deg) translateY(.02em)}
+
+  /* stacked mark */
+  .stack{display:inline-flex;flex-direction:column;font-family:var(--display);font-weight:600;letter-spacing:-.01em}
+  .stack .top{line-height:1}
+  .stack .bot{display:flex;justify-content:space-between;line-height:.85}
+  .stack .top span,.stack .bot span{display:inline-block}
+  .stack .top span:nth-child(1){transform:rotate(-5deg) translateY(.02em)}
+  .stack .top span:nth-child(2){transform:rotate(4deg) translateY(-.05em)}
+  .stack .top span:nth-child(3){transform:rotate(2deg)}
+  .stack .top span:nth-child(4){transform:rotate(-4deg) translateY(.04em)}
+  .stack .top span:nth-child(5){transform:rotate(5deg) translateY(-.04em)}
+  .stack .top span:nth-child(6){transform:rotate(-3deg) translateY(.02em)}
+  .stack .top span:nth-child(7){transform:rotate(4deg) translateY(-.05em)}
+  .stack .bot span:nth-child(1){transform:rotate(-4deg) translateY(.03em)}
+  .stack .bot span:nth-child(2){transform:rotate(3deg) translateY(-.02em)}
+  .stack .bot span:nth-child(3){transform:rotate(-5deg) translateY(.02em)}
+
+  /* --- shared type --- */
+  .eyebrow{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.14em;color:var(--deep);text-transform:lowercase}
+  .label{font-family:var(--mono);font-weight:600;font-size:10px;letter-spacing:.12em;color:var(--ink-45);text-transform:lowercase}
+  .sec-num{font-family:var(--display);font-weight:600;color:var(--orange)}
+  h1.section{font-family:var(--display);font-weight:600;font-size:clamp(28px,5vw,34px);letter-spacing:-.01em;margin:6px 0 18px}
+  .lede{font-size:clamp(14px,2.4vw,14.5px);line-height:1.65;max-width:560px}
+  .fine{font-size:12px;line-height:1.55;color:var(--ink-70)}
+  .cap{font-size:12px;line-height:1.55;color:var(--ink-65)}
+  .ff{font-family:var(--display);font-weight:600}
+
+  section{padding:clamp(44px,7vw,64px) 0}
+  section + section{border-top:1px solid var(--ink-08)}
+
+  .grid{display:grid;gap:16px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  .row{display:flex;gap:16px;flex-wrap:wrap}
+  .card{background:var(--cream);border-radius:10px;padding:20px}
+  .panel{background:#fff;border:1px solid var(--ink-12);border-radius:10px}
+  .mt24{margin-top:24px}.mt20{margin-top:20px}.mt28{margin-top:28px}
+
+  /* cover */
+  .cover{background:var(--orange);min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,6vw,64px)}
+  .cover .top{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.14em;color:var(--black)}
+  .cover .mark{font-size:clamp(52px,13vw,88px);color:var(--cream)}
+  .cover .tagline{font-family:var(--display);font-weight:500;font-size:clamp(18px,3.5vw,22px);color:var(--black);margin-top:18px}
+  .cover .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;color:var(--black)}
+
+  /* contents */
+  .toc{display:grid;grid-template-columns:1fr 1fr;gap:8px 48px;margin-top:20px;font-size:14px;line-height:1.6}
+  .toc a{display:flex;gap:12px;color:var(--black)}
+  .toc a:hover{color:var(--deep)}
+  .toc a span{font-family:var(--display);font-weight:600;color:var(--orange)}
+
+  /* swatches */
+  .swatch{border:1px solid var(--ink-12);border-radius:10px;overflow:hidden}
+  .swatch .chip{height:96px}
+  .swatch .body{padding:12px 14px}
+  .swatch .code{font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ink-50);margin-top:3px}
+  .balance{display:flex;height:34px;border-radius:8px;overflow:hidden;margin-top:8px;border:1px solid var(--ink-12)}
+  .pairs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:8px}
+  .pair{border-radius:8px;padding:14px 10px;text-align:center;font-family:var(--display);font-weight:600;font-size:13px}
+
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  thead th{text-align:left;padding:8px 10px;border-bottom:1px solid var(--ink-15);font-weight:600;color:var(--ink-50)}
+  tbody td{padding:8px 10px;border-bottom:1px solid var(--ink-08)}
+  table.voice thead th{border-bottom:2px solid var(--black);font-weight:700;color:var(--black)}
+  table.voice tbody td{padding:9px 10px}
+
+  /* don'ts */
+  .donts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .dont{position:relative;background:var(--cream);border-radius:10px;padding:22px 16px 14px;text-align:center}
+  .dont .x{position:absolute;top:8px;right:10px;font:700 13px var(--body);color:var(--deep)}
+  .dont .cap{margin-top:10px;font-size:10.5px}
+
+  /* buttons */
+  .btn{font-family:var(--display);font-weight:600;font-size:14px;border-radius:999px;padding:10px 22px;display:inline-block}
+  .btn-primary{background:var(--orange);color:var(--cream)}
+  .btn-hover{background:var(--deep);color:var(--cream)}
+  .btn-secondary{border:1.5px solid var(--black);color:var(--black);padding:9px 22px}
+
+  /* header demo */
+  .demo-header{background:var(--cream);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;flex-wrap:wrap}
+  .demo-nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .demo-nav .lnk{font-family:var(--display);font-weight:500;font-size:14px;color:var(--black)}
+
+  /* social */
+  .feed{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+  .feed>*{aspect-ratio:1;border-radius:3px}
+  .feed img{width:100%;height:100%;object-fit:cover}
+  .feed .tile{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:9px}
+  .tmpl-a{width:100%;max-width:230px;aspect-ratio:1;background:var(--cream);border:1px solid var(--ink-12);border-radius:10px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .tmpl-b{width:100%;max-width:230px;aspect-ratio:1;background:var(--black);border-radius:10px;padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+  .tmpl-c{width:129px;aspect-ratio:9/16;background:var(--orange);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px}
+  .photo-ph{background:repeating-linear-gradient(45deg,#EFE6D2 0 6px,#F7F0E1 6px 12px);display:flex;align-items:center;justify-content:center}
+  .tmpl-notes{margin:10px 0 0;padding-left:16px;font-size:11px;line-height:1.65;color:var(--ink-70)}
+
+  /* footer */
+  .foot{font-family:var(--mono);font-weight:500;font-size:9px;letter-spacing:.1em;color:var(--ink-45);text-transform:lowercase;padding:18px 0 32px}
+
+  @media(max-width:720px){
+    .cols-3,.donts{grid-template-columns:1fr}
+    .cols-2{grid-template-columns:1fr}
+    .row>*{flex:1 1 100%!important}
+    .toc{grid-template-columns:1fr}
+    .grid.swatches{grid-template-columns:repeat(2,1fr)!important}
+    .pairs{grid-template-columns:repeat(2,1fr)}
+    .feed{grid-template-columns:repeat(3,1fr)}
+    table{display:block;overflow-x:auto;white-space:nowrap}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="top">brand guidelines — v1.0</div>
+  <div>
+    <div class="km mark"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span><span>b</span><span>o</span><span>y</span></div>
+    <div class="tagline">grooming goods for dirty dogs.</div>
+  </div>
+  <div class="meta"><span>hong kong</span><span>july 2026</span></div>
+</header>
+
+<!-- ============ CONTENTS ============ -->
+<section id="contents">
+  <div class="wrap">
+    <div class="eyebrow">contents</div>
+    <nav class="toc">
+      <a href="#s01"><span>01</span>the brand</a>
+      <a href="#s06"><span>06</span>photography</a>
+      <a href="#s02"><span>02</span>logo</a>
+      <a href="#s07"><span>07</span>packaging</a>
+      <a href="#s03"><span>03</span>color</a>
+      <a href="#s08"><span>08</span>website</a>
+      <a href="#s04"><span>04</span>typography</a>
+      <a href="#s09"><span>09</span>social</a>
+      <a href="#s05"><span>05</span>voice</a>
+      <a href="#s10"><span>10</span>asset kit</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============ 01 THE BRAND ============ -->
+<section id="s01">
+  <div class="wrap">
+    <div class="eyebrow">01</div>
+    <h1 class="section">the brand</h1>
+    <p class="lede" style="margin-bottom:14px">scruffyboy makes premium grooming and cleanup goods for adventure dogs — the ones that come home muddy, beach-soaked, and extremely pleased with themselves. founded in hong kong. co-starring moose, a real dog, who is not a mascot and will not be turned into a cartoon.</p>
+    <p class="lede">the brand is a hyped modern consumer brand that happens to be for dogs. the tension between the scrappy name and the premium execution is the joke — protect it from both directions. never cutesy pet-store; never sterile luxury.</p>
+    <div class="row cols-3 mt24" style="display:grid">
+      <div class="card"><div class="ff" style="font-size:15px;margin-bottom:6px">tagline</div><div style="font-size:13px;line-height:1.55">"grooming goods for dirty dogs." — always lowercase, always with the period.</div></div>
+      <div class="card"><div class="ff" style="font-size:15px;margin-bottom:6px">the hard rule</div><div style="font-size:13px;line-height:1.55">no paws. no bones. no dog silhouettes. no pet-industry clichés. no gradients. anywhere, ever.</div></div>
+      <div class="card"><div class="ff" style="font-size:15px;margin-bottom:6px">reference points</div><div style="font-size:13px;line-height:1.55">liquid death's confidence, graza's playfulness. deadpan, not zany.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 LOGO ============ -->
+<section id="s02">
+  <div class="wrap">
+    <div class="eyebrow">02</div>
+    <h1 class="section">logo</h1>
+    <p class="lede" style="margin-bottom:24px">one typeface (fredoka semibold), always lowercase, three sanctioned forms. the bounce is the brand's energy; the calm variant is its indoor voice. never mix forms in one layout.</p>
+
+    <div class="row">
+      <div style="flex:1.6;min-width:240px">
+        <div class="label">primary — kinetic single line</div>
+        <div class="card" style="margin-top:8px;padding:44px 24px;display:flex;justify-content:center"><div class="km" style="font-size:44px;color:var(--black)"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span><span>b</span><span>o</span><span>y</span></div></div>
+        <div class="cap" style="margin-top:8px;color:var(--ink-70)">default everywhere space allows: website header, hero, hang tags, merch, ads.</div>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div class="label">secondary — stacked</div>
+        <div class="card" style="margin-top:8px;padding:26px 24px;display:flex;justify-content:center">
+          <div class="stack" style="font-size:34px;color:var(--black)"><div class="top"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span></div><div class="bot"><span>b</span><span>o</span><span>y</span></div></div>
+        </div>
+        <div class="cap" style="margin-top:8px;color:var(--ink-70)">cramped or square spaces: avatars, app icon, stamps, box flaps. "boy" is justified to the width of "scruffy" — never enlarged, never recolored on its own.</div>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div class="label">calm — level</div>
+        <div class="card" style="margin-top:8px;padding:44px 20px;display:flex;justify-content:center;align-items:center"><div class="ff" style="font-size:26px;letter-spacing:-.01em">scruffyboy</div></div>
+        <div class="cap" style="margin-top:8px;color:var(--ink-70)">packaging, legal lines, small print, co-brand lockups — anywhere it sits next to dense text or below minimum kinetic size.</div>
+      </div>
+    </div>
+
+    <div class="row mt28">
+      <div style="flex:1;min-width:240px">
+        <div class="label">clear space</div>
+        <div class="panel" style="margin-top:8px;padding:34px;display:flex;justify-content:center"><div style="border:1.5px dashed var(--deep);padding:26px 30px;position:relative"><div class="km" style="font-size:26px;color:var(--black)"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span><span>b</span><span>o</span><span>y</span></div><div style="position:absolute;top:2px;left:4px;font-family:var(--mono);font-weight:600;font-size:10px;color:var(--deep)">1×</div></div></div>
+        <div class="cap" style="margin-top:8px;color:var(--ink-70)">keep clear space of 1× on all sides, where × = the height of the lowercase "s". nothing enters this zone, including moose.</div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div class="label">minimum sizes</div>
+        <div class="panel" style="margin-top:8px;padding:24px 28px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div class="km" style="font-size:24px;color:var(--black)"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span><span>b</span><span>o</span><span>y</span></div><div style="font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ink-50)">kinetic min — 24 px / 8 mm</div></div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div class="ff" style="font-size:14px">scruffyboy</div><div style="font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ink-50)">below that — switch to calm, min 12 px / 4 mm</div></div>
+        </div>
+        <div class="cap" style="margin-top:8px;color:var(--ink-70)">below 24 px the bounce stops reading as intentional and starts reading as a rendering error. never scale it down past the threshold — swap forms.</div>
+      </div>
+    </div>
+
+    <div class="mt28">
+      <div class="label">don'ts</div>
+      <div class="donts">
+        <div class="dont"><div class="ff" style="font-size:19px;line-height:1">scruffy<span style="color:var(--orange)">boy</span></div><div class="cap">don't recolor individual words or letters</div><div class="x">✕</div></div>
+        <div class="dont"><div class="ff" style="font-size:19px;line-height:1">SCRUFFYBOY</div><div class="cap">don't set it in uppercase. ever. not even in legal copy</div><div class="x">✕</div></div>
+        <div class="dont" style="overflow:hidden"><div class="ff" style="font-size:19px;line-height:1;transform:scaleX(1.45);transform-origin:center">scruffyboy</div><div class="cap">don't stretch, squash, or condense the mark</div><div class="x">✕</div></div>
+        <div class="dont"><div class="ff" style="font-size:19px;line-height:1;color:transparent;-webkit-text-stroke:1.2px var(--black)">scruffyboy</div><div class="cap">don't outline it — the mark is always solid</div><div class="x">✕</div></div>
+        <div class="dont"><div class="ff" style="font-size:19px;line-height:1;text-shadow:3px 3px 0 rgba(22,19,16,.25)">scruffyboy</div><div class="cap">don't add shadows, gradients, or any dimensional effect</div><div class="x">✕</div></div>
+        <div class="dont"><div class="ff" style="font-size:19px;line-height:1;color:rgba(22,19,16,.35)">scruffyboy + [paw icon]</div><div class="cap">don't pair with paws, bones, dog silhouettes, or any pet cliché</div><div class="x">✕</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 COLOR ============ -->
+<section id="s03">
+  <div class="wrap">
+    <div class="eyebrow">03</div>
+    <h1 class="section">color</h1>
+    <p class="lede" style="margin-bottom:24px">four colors, no additions, no tints, no gradients. cream does the heavy lifting; orange is the loud one; black is the voice; deep orange only ever means "pressed" or "hover".</p>
+    <div class="grid swatches" style="grid-template-columns:repeat(4,1fr)">
+      <div class="swatch"><div class="chip" style="background:var(--cream)"></div><div class="body"><div class="ff" style="font-size:14px">warm cream</div><div class="code">#F7F0E1</div><div class="cap" style="margin-top:6px;font-size:11px">default background. ~60% of any layout.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--orange)"></div><div class="body"><div class="ff" style="font-size:14px">bright orange</div><div class="code">#FF6B35</div><div class="cap" style="margin-top:6px;font-size:11px">the brand color. blocks, buttons, avatar. ~25%.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--black)"></div><div class="body"><div class="ff" style="font-size:14px">near-black</div><div class="code">#161310</div><div class="cap" style="margin-top:6px;font-size:11px">all body text. occasional full-bleed statement posts. ~15%.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--deep)"></div><div class="body"><div class="ff" style="font-size:14px">deep orange</div><div class="code">#E24E17</div><div class="cap" style="margin-top:6px;font-size:11px">interaction states only. never a surface color.</div></div></div>
+    </div>
+    <div class="mt24">
+      <div class="label">balance</div>
+      <div class="balance"><div style="width:60%;background:var(--cream)"></div><div style="width:25%;background:var(--orange)"></div><div style="width:12%;background:var(--black)"></div><div style="width:3%;background:var(--deep)"></div></div>
+    </div>
+    <div class="mt24">
+      <div class="label">approved pairings</div>
+      <div class="pairs">
+        <div class="pair" style="background:var(--cream);border:1px solid var(--ink-12);color:var(--black)">black on cream</div>
+        <div class="pair" style="background:var(--orange);color:var(--cream)">cream on orange</div>
+        <div class="pair" style="background:var(--black);color:var(--cream)">cream on black</div>
+        <div class="pair" style="background:var(--black);color:var(--orange)">orange on black</div>
+        <div class="pair" style="background:var(--orange);color:var(--black)">black on orange</div>
+        <div class="pair" style="background:var(--cream);border:1.5px dashed var(--deep);color:var(--orange)">orange on cream — display ≥28px only</div>
+      </div>
+      <div class="cap" style="margin-top:10px;color:var(--ink-70)">orange on cream fails contrast for body text (2.4:1) — reserve it for large display type. never set body copy in orange.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 TYPOGRAPHY ============ -->
+<section id="s04">
+  <div class="wrap">
+    <div class="eyebrow">04</div>
+    <h1 class="section">typography</h1>
+    <p class="lede" style="margin-bottom:24px">two voices: fredoka speaks, helvetica explains. everything the brand says in fredoka is lowercase — headlines, buttons, product names, all of it. helvetica handles paragraphs, specs, and legal, in normal sentence case.</p>
+    <div class="row">
+      <div class="card" style="flex:1;min-width:240px">
+        <div class="label">display — fredoka semibold 600</div>
+        <div class="ff" style="font-size:34px;letter-spacing:-.01em;line-height:1.15;margin-top:14px">mud happens.</div>
+        <div class="ff" style="font-size:15px;letter-spacing:-.005em;line-height:1.3;margin-top:12px;color:rgba(22,19,16,.85)">abcdefghijklmnopqrstuvwxyz 0123456789</div>
+        <div class="cap" style="margin-top:14px;font-size:11.5px">headlines, buttons, product names, big numbers. letter-spacing −0.01em. lowercase only — no exceptions, including sentence starts.</div>
+      </div>
+      <div class="panel" style="flex:1;min-width:240px;padding:24px">
+        <div class="label">body — helvetica</div>
+        <div style="font-size:14.5px;line-height:1.65;margin-top:14px">Rinses out trail mud, beach salt, and whatever that was. Safe for daily use, tested on one very patient dog.</div>
+        <div class="cap" style="margin-top:14px;font-size:11.5px">paragraphs, product details, UI labels, legal. sentence case. 14–16px on web, 9–10pt on pack. never bold whole paragraphs.</div>
+      </div>
+    </div>
+    <div class="mt24">
+      <div class="label">scale</div>
+      <table style="margin-top:8px">
+        <thead><tr><th>role</th><th>face</th><th>web</th><th>notes</th></tr></thead>
+        <tbody>
+          <tr><td>hero headline</td><td>fredoka 600</td><td>56–96px</td><td>line-height 1.0–1.1</td></tr>
+          <tr><td>section heading</td><td>fredoka 600</td><td>28–36px</td><td>line-height 1.15</td></tr>
+          <tr><td>product name</td><td>fredoka 600</td><td>18–22px</td><td>lowercase, with ampersands ("dirt &amp; salt rinse")</td></tr>
+          <tr><td>body</td><td>helvetica</td><td>14–16px</td><td>line-height 1.6, sentence case</td></tr>
+          <tr><td>caption / spec</td><td>helvetica</td><td>10.5–12px</td><td>55% black for secondary info</td></tr>
+          <tr><td style="border-bottom:none">eyebrow / meta</td><td style="border-bottom:none">monospace (ui-monospace / menlo)</td><td style="border-bottom:none">9–11px</td><td style="border-bottom:none">letter-spaced .1em, lowercase — used sparingly for labels like this document's</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 VOICE ============ -->
+<section id="s05">
+  <div class="wrap">
+    <div class="eyebrow">05</div>
+    <h1 class="section">voice</h1>
+    <p class="lede" style="margin-bottom:24px">deadpan-playful. the humor comes from treating dog mess with the seriousness of a skincare brand, then undercutting it with one dry line. never puns, never baby talk, never exclamation marks doing the work a joke should do.</p>
+    <div class="row">
+      <div class="card" style="flex:1;min-width:200px"><div class="ff" style="font-size:15px;margin-bottom:6px">confident</div><div style="font-size:12.5px;line-height:1.6">state things flatly. "it works." beats "we think you'll love it!" — the brand never asks for approval.</div></div>
+      <div class="card" style="flex:1;min-width:200px"><div class="ff" style="font-size:15px;margin-bottom:6px">specific</div><div style="font-size:12.5px;line-height:1.6">name the actual mess: trail mud, beach salt, "whatever that was." specificity is the premium signal.</div></div>
+      <div class="card" style="flex:1;min-width:200px"><div class="ff" style="font-size:15px;margin-bottom:6px">dry</div><div style="font-size:12.5px;line-height:1.6">one joke per surface, delivered straight. if a line needs an emoji to land, it doesn't land.</div></div>
+    </div>
+    <table class="voice mt24">
+      <thead><tr><th style="width:22%">surface</th><th style="color:var(--deep)">we say</th><th style="color:var(--ink-45)">we never say</th></tr></thead>
+      <tbody>
+        <tr><td>hero</td><td class="ff">grooming goods for dirty dogs.</td><td style="color:var(--ink-50)">Pamper your furry friend! 🐶</td></tr>
+        <tr><td>product name</td><td class="ff">dirt &amp; salt rinse</td><td style="color:var(--ink-50)">Pawfect Clean Shampoo</td></tr>
+        <tr><td>cta</td><td class="ff">get the goods</td><td style="color:var(--ink-50)">Shop Now!!</td></tr>
+        <tr><td>out of stock</td><td class="ff">gone. moose is also disappointed.</td><td style="color:var(--ink-50)">Oh no! This item is currently unavailable 😢</td></tr>
+        <tr><td>shipping note</td><td class="ff">ships in 48h. the mud can wait.</td><td style="color:var(--ink-50)">Fast &amp; Free Shipping On All Orders!</td></tr>
+        <tr><td style="border-bottom:none">404 page</td><td class="ff" style="border-bottom:none">this page rolled in something and ran off.</td><td style="color:var(--ink-50);border-bottom:none">Oops! Page not found</td></tr>
+      </tbody>
+    </table>
+    <div class="cap" style="margin-top:14px;color:var(--ink-70)">moose rule: moose appears in copy as a real, slightly unimpressed colleague — never as a spokesperson, never "says" marketing lines, never gets a speech bubble.</div>
+  </div>
+</section>
+
+<!-- ============ 06 PHOTOGRAPHY ============ -->
+<section id="s06">
+  <div class="wrap">
+    <div class="eyebrow">06</div>
+    <h1 class="section">photography</h1>
+    <p class="lede" style="margin-bottom:24px">real dog, real dirt, real places. shoot moose (and friends) like an outdoor-gear brand shoots athletes: natural light, mid-action, unposed. the mess is the hero — never clean it up in post.</p>
+    <div class="grid cols-3">
+      <div class="panel" style="overflow:hidden"><img src="assets/photo-shake.jpg" alt="dog mid-shake on a muddy trail" style="aspect-ratio:4/3;object-fit:cover"><div class="cap" style="padding:10px 12px;font-size:11px">action — frozen mid-chaos, shot fast and close</div></div>
+      <div class="panel" style="overflow:hidden"><img src="assets/photo-boot.jpg" alt="muddy dog sitting in a car boot" style="aspect-ratio:4/3;object-fit:cover"><div class="cap" style="padding:10px 12px;font-size:11px">aftermath — the problem the product exists for</div></div>
+      <div class="panel" style="overflow:hidden"><img src="assets/photo-trail.jpg" alt="dog trailside next to a hiking backpack" style="aspect-ratio:4/3;object-fit:cover"><div class="cap" style="padding:10px 12px;font-size:11px">product-in-world — gear context, never studio tabletop</div></div>
+    </div>
+    <div class="row mt20">
+      <div class="card" style="flex:1;min-width:240px"><div class="ff" style="font-size:14px;margin-bottom:8px">always</div><ul style="padding-left:16px;font-size:12px;line-height:1.7"><li>natural light, real locations (trail, beach, car boot, bathtub)</li><li>dirt visible and celebrated</li><li>dog-height camera angles</li><li>candid over posed — outtakes are on-brand</li></ul></div>
+      <div class="card" style="flex:1;min-width:240px"><div class="ff" style="font-size:14px;margin-bottom:8px">never</div><ul style="padding-left:16px;font-size:12px;line-height:1.7"><li>studio seamless backgrounds or props</li><li>costumes, bandanas with logos, birthday hats</li><li>humans as the subject (hands are fine)</li><li>heavy filters or color grading that fights the palette</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 PACKAGING ============ -->
+<section id="s07">
+  <div class="wrap">
+    <div class="eyebrow">07</div>
+    <h1 class="section">packaging</h1>
+    <p class="lede" style="margin-bottom:24px">packaging is the brand's indoor voice: calm wordmark only, generous cream, one orange accent band. the shelf does the shouting through color blocking, not through the logo.</p>
+    <div class="label">front label anatomy</div>
+    <div class="row" style="margin-top:10px;align-items:flex-start">
+      <div style="width:300px;max-width:100%;border:1px solid var(--ink-15);border-radius:12px;overflow:hidden;flex:none">
+        <div style="background:var(--cream);padding:22px 22px 18px">
+          <div class="ff" style="font-size:17px">scruffyboy</div>
+          <div class="ff" style="font-size:26px;line-height:1.1;margin-top:26px">dirt &amp; salt rinse</div>
+          <div style="font-size:11px;color:var(--ink-65);margin-top:6px">Rinses out trail mud, beach salt, and whatever that was.</div>
+        </div>
+        <div style="background:var(--orange);padding:10px 22px;display:flex;justify-content:space-between;align-items:center"><span class="ff" style="font-size:11px;color:var(--cream)">for dirty dogs</span><span style="font-family:var(--mono);font-weight:600;font-size:10px;color:var(--black)">250 ml</span></div>
+      </div>
+      <ol style="flex:1;min-width:240px;margin:4px 0 0;padding-left:20px;font-size:12.5px;line-height:1.8">
+        <li><b>calm wordmark</b>, top left, black on cream — never kinetic on pack, never centered</li>
+        <li><b>product name</b> in fredoka 600, lowercase, the largest element on the label</li>
+        <li><b>one dry line</b> of helvetica under the name — the only joke on the front</li>
+        <li><b>orange accent band</b> at the base carrying "for dirty dogs" + volume — the only orange on the front</li>
+        <li>back label: helvetica only, sentence case, calm wordmark repeated small; regulatory text never in fredoka</li>
+      </ol>
+    </div>
+    <div class="cap" style="margin-top:18px;color:var(--ink-70)">product line naming: lowercase noun phrases that name the mess or the fix — "dirt &amp; salt rinse", "post-swim wipes", "the hydrant" (paw cleaner). never names with "paw", "pup", or "fur" puns.</div>
+  </div>
+</section>
+
+<!-- ============ 08 WEBSITE ============ -->
+<section id="s08">
+  <div class="wrap">
+    <div class="eyebrow">08</div>
+    <h1 class="section">website</h1>
+    <p class="lede" style="margin-bottom:24px">cream canvas, black text, orange only where it earns clicks. the kinetic wordmark lives in the header at 26px — its smallest sanctioned home.</p>
+    <div class="label">header</div>
+    <div class="panel" style="margin-top:8px;overflow:hidden">
+      <div class="demo-header">
+        <div class="km" style="font-size:26px;color:var(--black)"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span><span>b</span><span>o</span><span>y</span></div>
+        <div class="demo-nav"><span class="lnk">shop</span><span class="lnk">about</span><span class="lnk">moose</span><span class="btn btn-primary" style="font-size:14px;padding:9px 20px">get the goods</span></div>
+      </div>
+    </div>
+    <div class="row mt20">
+      <div style="flex:1;min-width:240px">
+        <div class="label">buttons</div>
+        <div class="card" style="margin-top:8px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span class="btn btn-primary">primary</span><span style="font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ink-50)">#FF6B35 · pill · fredoka 600 lowercase</span></div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span class="btn btn-hover">hover / pressed</span><span style="font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ink-50)">#E24E17 — the only job deep orange has</span></div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span class="btn btn-secondary">secondary</span><span style="font-family:var(--mono);font-weight:600;font-size:10px;color:var(--ink-50)">outlined black, transparent fill</span></div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div class="label">favicon &amp; app icon</div>
+        <div class="panel" style="margin-top:8px;padding:20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+          <div style="width:64px;height:64px;background:var(--orange);border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none"><div class="stack" style="font-size:15px;color:var(--cream)"><div class="top"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span></div><div class="bot"><span>b</span><span>o</span><span>y</span></div></div></div>
+          <div style="width:32px;height:32px;background:var(--orange);border-radius:7px;display:flex;align-items:center;justify-content:center;flex:none"><span class="ff" style="font-size:22px;color:var(--cream);line-height:1;transform:rotate(-5deg)">s</span></div>
+          <div class="cap" style="font-size:11.5px;line-height:1.6;flex:1;min-width:160px">app icon: stacked secondary on orange. favicon and anything ≤32px: single tilted "s" on orange — the only place the mark abbreviates.</div>
+        </div>
+        <div class="cap" style="margin-top:10px;color:var(--ink-70)">links: black, underlined on hover, turning deep orange. never blue anywhere on the site.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 SOCIAL ============ -->
+<section id="s09">
+  <div class="wrap">
+    <div class="eyebrow">09</div>
+    <h1 class="section">social</h1>
+    <p class="lede" style="margin-bottom:24px">the feed runs on three post templates plus photography. rhythm rule: never two template posts of the same color adjacent — the grid should alternate photo / cream / orange with an occasional black statement.</p>
+    <div class="row">
+      <div style="flex:none;width:170px;max-width:100%">
+        <div class="label">avatar</div>
+        <div class="panel" style="margin-top:8px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px">
+          <div style="width:96px;height:96px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center"><div class="stack" style="font-size:19px;color:var(--cream)"><div class="top"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span></div><div class="bot"><span>b</span><span>o</span><span>y</span></div></div></div>
+          <div class="cap" style="font-size:10.5px;text-align:center">stacked secondary, cream on orange. never the single-line mark in a circle.</div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div class="label">feed rhythm</div>
+        <div class="panel" style="margin-top:8px;padding:18px">
+          <div class="feed">
+            <img src="assets/photo-shake.jpg" alt="">
+            <div class="tile" style="background:var(--cream);color:var(--black)">drop</div>
+            <img src="assets/photo-boot.jpg" alt="">
+            <div class="tile" style="background:var(--orange);color:var(--cream)">promo</div>
+            <img src="assets/photo-trail.jpg" alt="">
+            <div class="tile" style="background:var(--black);color:var(--cream)">quote</div>
+          </div>
+          <div class="cap" style="margin-top:10px;font-size:10.5px">≥50% photography. template posts are the seasoning, not the meal.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt24">
+      <div style="flex:1;min-width:220px">
+        <div class="label">template a — product drop (1:1)</div>
+        <div class="tmpl-a" style="margin-top:8px">
+          <div class="ff" style="font-size:12px">scruffyboy</div>
+          <div class="ff" style="font-size:23px;line-height:1.08;letter-spacing:-.01em">new: dirt &amp;<br>salt rinse.</div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between"><span style="font-size:8.5px;color:var(--ink-65)">out now — link in bio</span><div class="photo-ph" style="width:72px;height:88px;border:1px solid var(--ink-15);border-radius:6px;margin-bottom:-24px"><span style="font-family:var(--mono);font-weight:600;font-size:7px;color:var(--ink-45);text-align:center">product<br>photo</span></div></div>
+          <div style="position:absolute;top:0;right:0;background:var(--orange);color:var(--cream);font-family:var(--display);font-weight:600;font-size:9px;padding:5px 10px;border-radius:0 0 0 8px">new</div>
+        </div>
+        <ul class="tmpl-notes"><li>cream bg, calm wordmark top left at 5% of canvas</li><li>headline fredoka 600, max 2 lines, starts with "new:"</li><li>product photo bleeds off the bottom-right corner</li><li>one orange corner tab max</li></ul>
+      </div>
+      <div style="flex:1;min-width:220px">
+        <div class="label">template b — statement (1:1)</div>
+        <div class="tmpl-b" style="margin-top:8px">
+          <div class="ff" style="font-size:23px;line-height:1.15;color:var(--cream);letter-spacing:-.01em">your dog is not<br>sorry about<br>the couch.</div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><div class="ff" style="font-size:12px;color:var(--orange)">scruffyboy</div><span style="font-family:var(--mono);font-weight:600;font-size:7.5px;color:rgba(247,240,225,.4)">est. hong kong</span></div>
+        </div>
+        <ul class="tmpl-notes"><li>black bg, one deadpan line, nothing else</li><li>calm wordmark bottom left in orange</li><li>max 1 per week — scarcity keeps it funny</li><li>alternate: same layout, orange bg + cream text</li></ul>
+      </div>
+      <div style="flex:1;min-width:220px">
+        <div class="label">template c — story (9:16)</div>
+        <div class="tmpl-c" style="margin-top:8px">
+          <div class="ff" style="font-size:9px;color:var(--cream)">scruffyboy</div>
+          <div class="photo-ph" style="flex:1;border-radius:8px"><span style="font-family:var(--mono);font-weight:600;font-size:7px;color:var(--ink-45);text-align:center">photo /<br>video</span></div>
+          <div class="ff" style="font-size:12px;line-height:1.15;color:var(--cream)">beach day.<br>you know what<br>that means.</div>
+          <div style="align-self:flex-start;background:var(--cream);color:var(--black);font-family:var(--display);font-weight:600;font-size:8px;padding:5px 12px;border-radius:999px">get the goods</div>
+        </div>
+        <ul class="tmpl-notes"><li>orange frame, media window with 8px radius</li><li>caption below the media, never on it</li><li>cream pill cta, lowercase</li><li>keep top/bottom 15% clear of ui-critical content</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 ASSET KIT ============ -->
+<section id="s10">
+  <div class="wrap">
+    <div class="eyebrow">10</div>
+    <h1 class="section">asset kit</h1>
+    <p class="lede" style="margin-bottom:20px">the working kit every partner, printer, and freelancer receives. if a file isn't in the kit, it isn't approved.</p>
+    <table class="voice">
+      <thead><tr><th>asset</th><th>formats</th><th>variants</th></tr></thead>
+      <tbody>
+        <tr><td>primary wordmark (kinetic)</td><td>svg, png @2x</td><td>black, cream, orange</td></tr>
+        <tr><td>secondary stacked</td><td>svg, png @2x</td><td>black, cream, cream-on-orange avatar crop</td></tr>
+        <tr><td>calm wordmark</td><td>svg, png @2x, pdf (print)</td><td>black, cream</td></tr>
+        <tr><td>favicon "s"</td><td>svg, ico, png 32/64</td><td>on orange</td></tr>
+        <tr><td>social templates a / b / c</td><td>canva templates, figma</td><td>1080×1080, 1080×1920</td></tr>
+        <tr><td style="border-bottom:none">fonts</td><td style="border-bottom:none">fredoka (google fonts, ofl)</td><td style="border-bottom:none">weights 500, 600 only</td></tr>
+      </tbody>
+    </table>
+    <div class="mt28 card" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="font-size:12px;line-height:1.6;color:var(--ink-70)">questions, edge cases, or a surface these rules don't cover:<br><b>brand@scruffyboy.co</b> — when in doubt, do less.</div>
+      <div class="km" style="font-size:22px;color:var(--black)"><span>s</span><span>c</span><span>r</span><span>u</span><span>f</span><span>f</span><span>y</span><span>b</span><span>o</span><span>y</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap"><div class="foot">scruffyboy — brand guidelines v1.0 — july 2026</div></footer>
+
+</body>
+</html>

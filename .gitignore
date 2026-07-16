@@ -1,0 +1,11 @@
+# macOS / Google Drive noise
+.DS_Store
+Icon?
+.tmp.driveupload/
+.tmp.drivedownload/
+
+# machine-specific harness config (scratchpad paths)
+.claude/
+
+# archival export, lives in Drive not git (9.5MB)
+*.zip
