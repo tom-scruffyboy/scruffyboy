@@ -26,10 +26,13 @@ Companion to `KLAVIYO.md` (email machine runbook).
 3. **Klaviyo dedicated sending domain** (send.scruffyboy.co) + set sender name to scruffyboy — single biggest deliverability lever. SPF/DKIM/DMARC records come from Klaviyo's wizard.
 4. `hello@scruffyboy.co` mailbox (Google Workspace alias is fine) — it's already printed on the site and in emails.
 
-## Hosting (choose at deploy)
+## Hosting — LIVE
 
-Any static host works as-is: **Cloudflare Pages / Netlify / Vercel** (free tiers all fine).
-Requirements: custom 404 mapping to `404.html`, HTTPS, and a redirect rule `/*.html → clean URLs` if wanted. No build step needed.
+- **Repo**: `tom-scruffyboy/scruffyboy` on GitHub (brand account; local remote pinned to that user so the keychain's other credential can't hijack pushes).
+- **Vercel**: project `scruffyboy-site` in team `scruffyboy` (Hobby), production = `main`. Live at **https://scruffyboy-site.vercel.app** — every `git push` auto-deploys; branches get preview URLs.
+- 404 is served from `404.html` automatically; no build step, no config file.
+- When `scruffyboy.co` is bought: Vercel project → Settings → Domains → add it (Vercel gives the DNS records).
+- Note: the team also contains an older project named `scruffyboy` (from a v0 session) — unrelated to this site; keep or delete in the Vercel dashboard.
 
 ## Shopify (launch phase)
 
