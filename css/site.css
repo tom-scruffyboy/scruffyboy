@@ -149,6 +149,30 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .signup .msg.error { display: block; color: var(--orange-deep); }
 .signup .msg.ok { display: block; color: var(--black); font-family: var(--font-display); font-weight: 600; }
 .signup .hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+.signup .spots {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono); font-weight: 600; font-size: 11px;
+  letter-spacing: var(--tracking-eyebrow); text-transform: lowercase; color: var(--orange-deep);
+}
+.signup .spots[hidden] { display: none; }
+.ig-link {
+  display: inline-block; margin-top: var(--space-4);
+  font-family: var(--font-display); font-weight: 500; font-size: 14px; color: var(--text-muted);
+}
+.ig-link:hover { color: var(--orange-deep); }
+.on-loud .ig-link { color: rgba(247, 240, 225, .8); }
+.on-loud .ig-link:hover { color: var(--cream); }
+.founder-line {
+  margin-top: var(--space-5); padding-left: var(--space-4);
+  border-left: 3px solid var(--orange);
+  font-family: var(--font-display); font-weight: 500; font-size: 18px;
+  letter-spacing: var(--tracking-display); line-height: 1.4; color: var(--text-body);
+}
+.founder-line .sig {
+  display: block; margin-top: var(--space-2);
+  font-family: var(--font-mono); font-weight: 600; font-size: 10px;
+  letter-spacing: var(--tracking-eyebrow); color: var(--text-muted);
+}
 /* on loud/statement surfaces */
 .on-loud .signup .perk { color: var(--cream); }
 .on-loud .signup input[type="email"] { border-color: var(--black); }

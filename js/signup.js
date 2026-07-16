@@ -7,6 +7,18 @@
   var LIST_ID = 'Umf2ZE';              // "scruffyboy — pre-launch waitlist"
   var ENDPOINT = 'https://a.klaviyo.com/client/subscriptions?company_id=' + COMPANY_ID;
 
+  // Signup counter. Klaviyo's list count isn't readable with a public key, so
+  // TAKEN is updated by hand from the list dashboard. The counter only renders
+  // once TAKEN reaches SHOW_AT — a low number reads worse than no number.
+  var SPOTS = { TAKEN: 0, TOTAL: 500, SHOW_AT: 25 };
+
+  if (SPOTS.TAKEN >= SPOTS.SHOW_AT) {
+    document.querySelectorAll('.spots').forEach(function (el) {
+      el.textContent = (SPOTS.TOTAL - SPOTS.TAKEN) + ' of ' + SPOTS.TOTAL + ' founder spots left';
+      el.hidden = false;
+    });
+  }
+
   function subscribe(email, source) {
     return fetch(ENDPOINT, {
       method: 'POST',
