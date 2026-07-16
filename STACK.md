@@ -36,7 +36,13 @@ Companion to `KLAVIYO.md` (email machine runbook).
 
 ## Shopify (launch phase)
 
-**What exists today**: Basic-plan store `e0scrm-cg.myshopify.com` (HKD, Hong Kong) — zero products, still named "My Store", timezone set to EDT (fix to HKT in Shopify settings).
+**What exists today**: Basic-plan store `e0scrm-cg.myshopify.com` (HKD, Hong Kong).
+Seeded Jul 16 with three DRAFT products (brand copy, HKD placeholder prices, tracked
+inventory at 0, site photos as stand-in images): dirt & salt rinse HK$140
+(SB-RINSE-250) · post-swim wipes HK$95 (SB-WIPES-40) · trail towel HK$190
+(SB-TOWEL-01). Launch = set real prices/photos/stock and flip status to Active.
+Still needs (admin UI only, not exposed via API): rename store from "My Store",
+fix timezone EDT → HKT (Settings → General).
 
 Recommended path for a small DTC line:
 1. **Keep this site as the brand/marketing layer** and build the store as the Shopify online store on the same domain — `scruffyboy.com` stays the landing until launch day, then either (a) the Shopify storefront takes over the apex domain with a custom theme built from the design system (components already exist as `.jsx` in the Claude Design project), or (b) the store lives at `shop.scruffyboy.com` and this site's CTAs switch from email capture to "get the goods" → shop links.
