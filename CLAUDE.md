@@ -1,8 +1,9 @@
 # scruffyboy pre-launch site — project context
 
 Static waitlist site (no build step) for scruffyboy — grooming goods for dirty dogs,
-Hong Kong, launching autumn 2026. Live at https://scruffyboy-site.vercel.app.
-Deploy = `git push` to main (GitHub `tom-scruffyboy/scruffyboy` → Vercel `scruffyboy-site`).
+Hong Kong, launching autumn 2026. **Live at https://scruffyboy.com** (since 17 Jul 2026;
+scruffyboy-site.vercel.app still resolves). Deploy = `git push` to main
+(GitHub `tom-scruffyboy/scruffyboy` → Vercel `scruffyboy-site`).
 
 Full handover, account inventory, and new-device setup: `../07 - handover/HANDOVER.md`
 (kept out of this repo on purpose). Deeper runbooks in this folder: `STACK.md` (tooling),
@@ -39,5 +40,7 @@ Full handover, account inventory, and new-device setup: `../07 - handover/HANDOV
 - Local dev servers can't read this Google Drive folder (macOS TCC) — mirror to a
   local temp dir to serve locally, or just push and use Vercel preview deploys.
   `.claude/launch.json` may contain a stale machine-specific mirror path.
-- Domain scruffyboy.com not purchased yet; on purchase, run the domain-day checklist
-  in `STACK.md` (Vercel domain, Search Console, Klaviyo sending domain, hello@ mailbox).
+- Domain scruffyboy.com is LIVE (bought 17 Jul 2026; **registrar GoDaddy** — the NameBright
+  nameservers it arrived with were the previous owner's and are gone). **All DNS is managed
+  in Vercel**, not at GoDaddy — add records there. Remaining from domain day: Klaviyo
+  sending domain (send.scruffyboy.com) + sender email switch; www → apex redirect. See `STACK.md`.

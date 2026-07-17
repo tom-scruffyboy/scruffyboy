@@ -19,12 +19,25 @@ Companion to `KLAVIYO.md` (email machine runbook).
 - Mark **generate_lead** as a *key event* (Admin → Events). It fires on successful signup with `method` = "hero form" / "footer form" — this is your conversion metric and A/B signal.
 - `thanks.html` page_view = submitted; `confirmed.html` page_view = double-opt-in completed. The gap between them is your confirmation drop-off rate.
 
-## At domain purchase (do these the same day)
+## Domain day — 17 Jul 2026 (mostly DONE)
 
-1. Point `scruffyboy.com` at the host; set the **canonical/OG URLs** are already written for it.
-2. **Google Search Console**: verify the domain (DNS TXT), submit `sitemap.xml`.
-3. **Klaviyo dedicated sending domain** (send.scruffyboy.com) + set sender name to scruffyboy — single biggest deliverability lever. SPF/DKIM/DMARC records come from Klaviyo's wizard.
-4. `hello@scruffyboy.com` mailbox (Google Workspace alias is fine) — it's already printed on the site and in emails.
+**scruffyboy.com is LIVE.** Bought at **GoDaddy**. The domain arrived pointing at NameBright
+nameservers (previous owner's DNS host) — those were replaced, so GoDaddy is registrar-only
+and **all DNS is managed in Vercel** (Vercel dashboard → Domains → scruffyboy.com → DNS Records).
+
+1. ✓ **Vercel**: `scruffyboy.com` + `www.scruffyboy.com` added to `scruffyboy-site`, Production, SSL issued.
+   Nameservers at GoDaddy → `ns1.vercel-dns.com` / `ns2.vercel-dns.com`.
+2. ✓ **Google Search Console**: domain property `sc-domain:scruffyboy.com`, verified via TXT
+   (`google-site-verification=Rlw3yDBrxfq4uQ5SuR_r5hTB0DO9F4Ow02aO9lwwCjs`, record in Vercel DNS).
+   `sitemap.xml` submitted.
+3. ✓ **Google Workspace**: scruffyboy.com added as a secondary domain on the hvngroup.co tenant;
+   MX → `smtp.google.com`; `hello@scruffyboy.com` created as a **Google Group** (free, no user seat).
+4. ✓ **Klaviyo dedicated sending domain**: send.scruffyboy.com Active (18 Jul). DNS in Vercel:
+   4× NS on `send` → ns1–4.klaviyo.com; TXT `@` klaviyo-site-verification=Wv94NM; TXT `_dmarc`
+   v=DMARC1; p=none. Sender = "scruffyboy" / hello@scruffyboy.com, applied to campaigns + flows.
+   (DMARC is p=none/monitor — tighten to quarantine/reject later once mail is flowing cleanly.)
+5. ☐ **www → apex redirect**: both currently serve 200. Canonicals point at the apex so it's
+   mitigated, but set www to redirect (308) in Vercel project → Domains → www → Edit.
 
 ## Hosting — LIVE
 

@@ -1,0 +1,12 @@
+{
+  "name": "scruffyboy",
+  "short_name": "scruffyboy",
+  "description": "Grooming goods for dirty dogs. Launching autumn 2026.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F0E1",
+  "theme_color": "#FF6B35",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any maskable" }
+  ]
+}
