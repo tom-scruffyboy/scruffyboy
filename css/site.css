@@ -244,6 +244,15 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .closer h2 { font-size: clamp(30px, 5.5vw, 48px); color: var(--cream); }
 .closer .signup { margin-left: auto; margin-right: auto; text-align: left; }
 
+/* ---------- share (post-signup pages) ---------- */
+.share { margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid var(--border-hairline); max-width: 480px; }
+.share-label { font-size: 18px; }
+.share-actions { display: flex; gap: var(--space-3); margin-top: var(--space-4); flex-wrap: wrap; }
+@media (max-width: 480px) {
+  .share-actions { flex-direction: column; align-items: stretch; }
+  .share-actions .btn { text-align: center; }
+}
+
 /* ---------- footer ---------- */
 .site-footer { background: var(--surface-statement); color: var(--text-on-statement); }
 .site-footer .inner { padding-top: var(--space-8); padding-bottom: var(--space-7); }

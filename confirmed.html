@@ -36,6 +36,13 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1898777770792309&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<!-- Confirmed-signup conversion. This page only loads after the double opt-in
+     click, so it measures REAL list growth — distinct from the form-submit
+     generate_lead/Lead events, which fire before confirmation. -->
+<script>
+  if (typeof gtag === 'function') { gtag('event', 'sign_up_confirmed', { method: 'double_opt_in' }); }
+  if (typeof fbq === 'function') { fbq('track', 'CompleteRegistration', { content_name: 'waitlist confirm' }); }
+</script>
 <title>you're in — scruffyboy</title>
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#FF6B35">
@@ -63,7 +70,16 @@ src="https://www.facebook.com/tr?id=1898777770792309&ev=PageView&noscript=1"
       <h1 class="display" style="margin-top:12px">you're in. officially.</h1>
       <p class="sub">Your spot is saved and your founder pricing is locked. A welcome email is on its way with the details — launch news lands in your inbox before anywhere else.</p>
       <p class="sub" style="margin-top:16px">Until then, there's nothing you need to do. The mud will find your dog on its own.</p>
-      <p style="margin-top:32px"><a class="btn btn-primary" href="/">back to the site</a></p>
+
+      <div class="share">
+        <p class="share-label display">know a dog that needs this?</p>
+        <div class="share-actions">
+          <a class="btn btn-primary" data-share-whatsapp href="#">share on whatsapp</a>
+          <button class="btn btn-secondary" data-share-copy type="button">copy link</button>
+        </div>
+      </div>
+
+      <p style="margin-top:32px"><a class="ig-link" href="/">back to the site →</a></p>
     </div>
   </section>
 </main>
@@ -86,5 +102,6 @@ src="https://www.facebook.com/tr?id=1898777770792309&ev=PageView&noscript=1"
   </div>
 </footer>
 
+<script src="js/share.js" defer></script>
 </body>
 </html>
