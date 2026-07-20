@@ -11,12 +11,17 @@ Work through in priority order. Mark items done here (or delete them) as you shi
 - [x] **Real date** (Jul 16). Tom confirmed **autumn 2026** — swapped into the announcement bar, title/meta/OG tags, marquee, and the FAQ answer (HTML + FAQPage structured data).
 - [x] **Founder voice line** (Jul 16). Tom's copy, verbatim: "i built this for the dirty dogs who love to play but also love the couch." — added to the Moose section with an orange rule and "— tom, founder" attribution.
 
-## From the 18 Jul SEO audit (full report: `06 - competitive & trends/SEO audit — 18 Jul 2026.md`)
+## From the 20 Jul SEO audit (full report: `06 - competitive & trends/SEO audit — 20 Jul 2026.md`)
 
 Site is technically clean — these are real but mostly small. The big one is #1.
 
-- [ ] **Remove the dead Stape tag.** `ap.stape.info/events/...` returns **503 on every page load** — undocumented server-side tracker, adds a failed request for zero benefit. Find and delete it (it rides with the Meta pixel setup).
-- [ ] **Cut the analytics tax.** Third-party scripts are **253KB of the 423KB page** and are the 7 slowest requests; full load 5.07s (the site itself is fine — TTFB 713ms). Meta Pixel alone is 103KB, heavier than the hero photo; Clarity makes 4 requests. Defer analytics to first-interaction/idle.
+- [x] ~~**Remove the dead Stape tag.**~~ **WITHDRAWN 20 Jul — this was wrong, do NOT delete it.**
+  The "503 on every page load" was measured through a Chrome profile with an ad-blocker
+  extension. Re-tested from a clean browser: `ap.stape.info/events/…` returns **200**. It's a
+  healthy Meta CAPI (server-side) gateway wired into the pixel config in Meta Events Manager,
+  not the repo. Deleting it would have broken server-side ads measurement. Same root cause as
+  the earlier GA4 "503" false alarm — see HANDOVER §3.
+- [ ] **Cut the analytics tax.** Third-party scripts are **253KB of the 423KB page**; full load 5.07s (the site itself is fine — TTFB 713ms). Meta Pixel alone is 103KB, heavier than the hero photo; Clarity makes 4 requests and its tag took 3.1s even on a clean connection. Defer analytics to first-interaction/idle. *(Weight + timings were measured in a clean, extension-free browser, so these numbers stand — unlike the 503s above.)*
 - [ ] **Trim title + meta description.** Title is 66 chars (truncates ~60); description 164 (truncates ~155).
 - [ ] **Images → WebP/AVIF.** Hero 169KB, boot 159KB, raw JPEG, no `srcset`. ~50–70% saving on the LCP image.
 - [ ] **Organization schema:** add `PostalAddress` (HK); swap `logo` from favicon.svg to a 512px PNG (Google's logo guidance favours raster).
