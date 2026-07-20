@@ -9,6 +9,19 @@ Full handover, account inventory, and new-device setup: `../07 - handover/HANDOV
 (kept out of this repo on purpose). Deeper runbooks in this folder: `STACK.md` (tooling),
 `KLAVIYO.md` (email machine), `UPDATES.md` (living task list — work top-down, mark done in-file).
 
+## Session ritual — Notion is the source of truth
+
+The **scruffyboy Ops Hub in Notion** is the single source of truth across all Claude
+surfaces (Cowork, Code, Design): https://app.notion.com/p/3a06408d1af681658e4cc68442c8054f
+
+- **START every session** by reading the Ops Hub: the Status snapshot, the Tasks board
+  (what's In progress / Blocked / the current priority), and the Connectors Registry
+  (what's actually live) — before touching this repo.
+- **END every session** by logging what you did to the Notion **Session Log**
+  (date · "Claude Code" · 2–5 terse bullets) *and* to `UPDATES.md`. If you changed a
+  decision or connector status, update the matching Notion database in the same session.
+- Full operating rules: https://app.notion.com/p/3a16408d1af681fdae30c124aaf2c9ba
+
 ## Hard rules before touching anything
 
 - **Brand voice gates all copy** (full rules in `brand.html`): Fredoka display text is

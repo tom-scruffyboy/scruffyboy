@@ -11,6 +11,29 @@ Work through in priority order. Mark items done here (or delete them) as you shi
 - [x] **Real date** (Jul 16). Tom confirmed **autumn 2026** — swapped into the announcement bar, title/meta/OG tags, marquee, and the FAQ answer (HTML + FAQPage structured data).
 - [x] **Founder voice line** (Jul 16). Tom's copy, verbatim: "i built this for the dirty dogs who love to play but also love the couch." — added to the Moose section with an orange rule and "— tom, founder" attribution.
 
+## From the 18 Jul SEO audit (full report: `06 - competitive & trends/SEO audit — 18 Jul 2026.md`)
+
+Site is technically clean — these are real but mostly small. The big one is #1.
+
+- [ ] **Remove the dead Stape tag.** `ap.stape.info/events/...` returns **503 on every page load** — undocumented server-side tracker, adds a failed request for zero benefit. Find and delete it (it rides with the Meta pixel setup).
+- [ ] **Cut the analytics tax.** Third-party scripts are **253KB of the 423KB page** and are the 7 slowest requests; full load 5.07s (the site itself is fine — TTFB 713ms). Meta Pixel alone is 103KB, heavier than the hero photo; Clarity makes 4 requests. Defer analytics to first-interaction/idle.
+- [ ] **Trim title + meta description.** Title is 66 chars (truncates ~60); description 164 (truncates ~155).
+- [ ] **Images → WebP/AVIF.** Hero 169KB, boot 159KB, raw JPEG, no `srcset`. ~50–70% saving on the LCP image.
+- [ ] **Organization schema:** add `PostalAddress` (HK); swap `logo` from favicon.svg to a 512px PNG (Google's logo guidance favours raster).
+- [ ] Mobile nits: Privacy link is 14×38px; marquee text is 11px. Bump both.
+- [ ] **Note: FAQPage schema is now inert.** Google retired FAQ rich results (docs removed 15 Jun 2026). Harmless to keep — just don't count it as a win.
+- [ ] **Bing Webmaster Tools** — one-click import from GSC, covers Bing + Yahoo HK (~6%; Yahoo HK is Bing-powered).
+- [ ] **Skip permanently:** Google Business Profile (ineligible — online-only), hreflang, HowTo schema, LocalBusiness schema, Baidu, HK directory listings.
+
+**The strategic finding:** the site is 2 indexable pages / ~757 words. It cannot rank for
+anything but the brand name. The uncontested wedge is the **post-adventure cleanup cluster**
+— HK publishers own "where to take your dog" and have entirely ceded "what to do with the
+filthy dog afterwards." Purest whitespace: `how to dry a dog in humid weather` (no content
+exists anywhere). Sleepers: the non-gazetted beaches rule and the 20kg leash law — the two
+most-cited HK dog facts with no definitive page. Write symptom-led, not category-led.
+**Caveat: content now is a 2027–28 asset, not an autumn-2026 one** — the referral mechanic
+is what pays out at launch.
+
 ## From the 17 Jul deep analysis (full report: `06 - competitive & trends/Deep DTC analysis — 17 Jul 2026.md`)
 
 Proposed from a 16-site DTC teardown + waitlist-conversion research. Tom to confirm priority before shipping anything marked (needs Tom).
@@ -42,3 +65,4 @@ Proposed from a 16-site DTC teardown + waitlist-conversion research. Tom to conf
 
 - [ ] Confirm scruffyboy.com is purchased and DNS points at this Vercel project before removing scruffyboy.vercel.app references anywhere.
 - [ ] "The hydrant" product name — confirm with Tom whether it survives now that the device design is basic/simplified, before it appears anywhere customer-facing.
+- [ ] **Social cards are live and public** (Jul 20). 28 PNGs pushed to `assets/social/` — they ship with the site, so the whole 30-day calendar is fetchable at `scruffyboy.com/assets/social/*.png` and sits in public git history. Tom okayed this knowingly. If the drip order ever matters, the fix is `.vercelignore` (keeps them off the domain, still public on GitHub) or moving them out of the repo entirely — deleting later won't unpublish. Still to do: attach them to the 120 draft rows in the Content Calendar DB and schedule to Postiz.
