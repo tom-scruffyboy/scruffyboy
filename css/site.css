@@ -33,7 +33,7 @@
   --text-product-name: 20px;
   --text-button: 15px;
   --text-body-size: 15px;
-  --text-caption: 11.5px;
+  --text-caption: 12px;   /* was 11.5px — sub-12px reads poorly on mobile */
   --text-eyebrow: 10px;
   --tracking-display: -0.01em;
   --tracking-eyebrow: 0.1em;
@@ -130,8 +130,9 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 /* ---------- signup form ---------- */
 .signup { margin-top: var(--space-6); max-width: 480px; }
 .signup .perk {
-  font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: -0.005em;
-  margin-bottom: var(--space-3);
+  /* this line is the offer — it earns more weight than the surrounding copy */
+  font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: var(--tracking-display);
+  line-height: 1.25; margin-bottom: var(--space-3);
 }
 .signup form { display: flex; gap: var(--space-2); }
 .signup input[type="email"] {
@@ -143,7 +144,8 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .signup input[type="email"]::placeholder { color: var(--text-faint); }
 .signup input[type="email"]:focus { outline: 2px solid var(--orange-deep); outline-offset: 1px; }
 .signup .note { margin-top: var(--space-3); font-size: var(--text-caption); color: var(--text-muted); }
-.signup .note a { color: inherit; text-decoration: underline; }
+/* padding grows the tap target; matching negative margin keeps the text where it sits */
+.signup .note a { color: inherit; text-decoration: underline; display: inline-block; padding: 10px 4px; margin: -10px -4px; }
 .signup .note a:hover { color: var(--link-hover); }
 .signup .msg { margin-top: var(--space-3); font-size: 13px; display: none; }
 .signup .msg.error { display: block; color: var(--orange-deep); }
@@ -186,7 +188,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .proof { border-top: 1px solid var(--border-hairline); border-bottom: 1px solid var(--border-hairline); overflow: hidden; padding: 12px 0; }
 .proof .track { display: flex; gap: 48px; width: max-content; animation: marquee 28s linear infinite; }
 .proof span {
-  font-family: var(--font-mono); font-weight: 600; font-size: 11px;
+  font-family: var(--font-mono); font-weight: 600; font-size: 12px;
   letter-spacing: var(--tracking-eyebrow); text-transform: lowercase; color: var(--text-muted); white-space: nowrap;
 }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -203,11 +205,16 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 /* what's coming tiles */
 .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
-.tile { background: #fff; border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: var(--space-6) var(--space-5); }
+.tile {
+  background: #fff; border: 1px solid var(--border-hairline); border-radius: var(--radius-card);
+  padding: var(--space-6) var(--space-5);
+  display: flex; flex-direction: column; /* lets the tag sit on the baseline of every card */
+}
 .tile .name { font-family: var(--font-display); font-weight: 600; font-size: var(--text-product-name); letter-spacing: -0.005em; }
 .tile p { margin-top: var(--space-3); color: var(--text-muted); font-size: 14px; }
 .tile .tag {
-  display: inline-block; margin-top: var(--space-4);
+  /* margin-top:auto pins the tag to the bottom so all three line up regardless of copy length */
+  margin-top: auto; padding-top: var(--space-4); align-self: flex-start;
   font-family: var(--font-mono); font-weight: 600; font-size: 9.5px; letter-spacing: var(--tracking-eyebrow);
   color: var(--orange-deep); text-transform: lowercase;
 }
@@ -277,4 +284,8 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
   .signup form { flex-direction: column; }
   .signup .btn { width: 100%; }
   .site-header .bar .btn { padding: 10px 18px; font-size: 14px; }
+  /* the hero photo straddles the fold on phones — a shorter crop and a tighter
+     gap put more of the dog (not just treetops) on the first screen */
+  .hero .grid { gap: var(--space-5); }
+  .hero .photo img { aspect-ratio: 16 / 10; }
 }
