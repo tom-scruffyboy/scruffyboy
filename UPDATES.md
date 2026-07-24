@@ -33,6 +33,18 @@ Seven of eight quick-win items shipped and live. Commits: 50956ba (perf+ads), 97
   - **Consent Mode v2 / banner** — held: only needed before EU/UK ad spend (STACK.md deliberately skipped a banner for HK launch scope). Decide when ads target EU/UK.
   - **Bing Webmaster Tools** — one-click GSC import (covers Bing + Yahoo HK ~6%); needs Tom's Microsoft login.
 
+## 24 Jul (later) — guides globalised + two industry guides (shipped, commit 6b8ecaf)
+
+Tom's steer: **"we are selling globally"** — stop making the content Hong Kong-focused.
+Plus the new content direction: talk about **what's wrong with mainstream pet cleaning products**.
+- [x] **De-localised all existing guides.** Dropped HK-specific framing (Dragon's Back / Shek O / "built and tested in Hong Kong" / "· Hong Kong" captions) for universal coast/trail/mountain language. Brand *origin* ("est. hong kong" in the footer) deliberately kept — that's identity, not content targeting.
+- [x] **Replaced the HK hiking guide with a global one.** `hiking-hong-kong-with-your-dog.html` → `hiking-with-your-dog.html` (universal heat/water/wildlife/leash advice + the cleanup order). Old URL **308-redirects** to the new one via `vercel.json` (first redirect rule in the repo) so nothing 404s or loses link equity.
+- [x] **New guide — `what-to-look-for-in-dog-shampoo.html`** (~780w). Label/ingredient education: pH-for-dogs, surfactants (SLS vs glucosides), fragrance/dye, unregulated "natural/organic/vet-approved" claims. Accurate + fair, no brand names, no health scares. Funnels to the range and the aisle POV.
+- [x] **New guide — `the-pet-grooming-aisle.html`** (~800w). Category point-of-view: the aisle is built around the full bath + baby-talk branding + one-size formulas, and ignores the between-grooms reality. Explicitly fair ("to be fair… good honest products exist"), critiques *focus* not safety. This is the brand-manifesto piece.
+- [x] Hub now lists **7 guides** (was 5); CollectionPage JSON-LD + all cards updated. Sitemap **12 → 14 URLs**. Both new guides have hero imagery (act-box flatlay / moose-mud-car) + the orange signup CTA block, which was also back-filled into all five earlier guides this session.
+- Validated: all JSON-LD parses, every internal link/image resolves, live 200s confirmed + redirect confirmed.
+- **Pipeline still queued:** how to get mud off a dog fast; sand & salt out of the coat; the between-grooms routine; which beaches/parks allow dogs (now framed globally, not HK-only).
+
 ## v3 redesign shipped (20 Jul)
 
 Claude Design v3 handoff deployed live (commit a040402): floating product hero, scroll-driven
