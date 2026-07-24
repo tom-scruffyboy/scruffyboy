@@ -21,12 +21,20 @@ posts to Klaviyo (curl-confirmed HTTP 202 — the browser's ad-blocker faked a f
 Kept the real Klaviyo signup.js — the bundle's was a no-op preview shim.
 
 Open follow-ups from the deploy:
-- [ ] **Funnel pages are nav-orphans + not in sitemap.** Header "the range"/"meet moose" are
-  on-page anchors (#range/#moose), so the-kit/no-bath/the-mess/meet-moose are direct-URL only.
-  Fine if they're ad landing pages; if they should be found organically, link them + add to sitemap.xml.
+- [x] ~~Funnel pages nav-orphans + not in sitemap.~~ **Indexing sorted (24 Jul, commit edafee1).**
+  Tom's call: index all 4. Flipped noindex→index on the-kit/no-bath/the-mess/meet-moose, added
+  each to sitemap.xml (now 6 URLs, fresh lastmod). Added canonical + OG/Twitter cards to all 4.
+  Search Console: meet-moose + the-mess **request-indexed** (priority crawl queue); no-bath +
+  the-kit rely on the registered sitemap for discovery (GSC UI too flaky to force the last two —
+  request them manually in ~30s each if you want to accelerate). NOTE: pages are still only
+  reachable in-site via anchor nav (#range/#moose) — no header link TO the standalone pages.
+  If you want in-site navigation to them, that's a separate small change.
 - [ ] **9 unused PNGs shipped** (~13MB: act2-*, photo-*-01, moose-mud-floor) — referenced by nothing. Prune if not needed.
-- [ ] Note: the SEO items below (title/meta length, WebP, analytics deferral) still apply to the new v3 index.html — re-check against the new markup.
-- [ ] One test pending-profile created during deploy verification (te+v3curltest@hvngroup.co) — unconfirmed, harmless; delete from Klaviyo if tidying.
+- [x] ~~title/meta length~~ **fixed 24 Jul**: index title 68→42ch, meta description 214→149ch;
+  funnel-page descriptions trimmed to ~130-145ch; added PostalAddress (HK) to Organization JSON-LD.
+- [ ] **Still open (perf SEO, not yet done):** images→WebP/AVIF (the v3 PNGs are large — moose-*/act* are 2-2.8MB each), and deferring the analytics stack (253KB) to first-interaction/idle. These are the remaining items from the 20 Jul SEO audit.
+- [ ] Analytics: GA4/Clarity/Meta verified present on all 9 pages — no gaps, no change needed.
+- [ ] Test pending-profiles from verification (te+v3curltest@, te+v3deploytest@) — unconfirmed, harmless; delete from Klaviyo if tidying.
 
 ## From the 20 Jul SEO audit (full report: `06 - competitive & trends/SEO audit — 20 Jul 2026.md`)
 
