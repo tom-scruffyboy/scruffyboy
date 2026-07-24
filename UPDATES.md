@@ -45,6 +45,19 @@ Plus the new content direction: talk about **what's wrong with mainstream pet cl
 - Validated: all JSON-LD parses, every internal link/image resolves, live 200s confirmed + redirect confirmed.
 - **Pipeline still queued:** how to get mud off a dog fast; sand & salt out of the coat; the between-grooms routine; which beaches/parks allow dogs (now framed globally, not HK-only).
 
+## 24 Jul (later still) — voice de-slop + two more guides (shipped)
+
+Tom's steer: the guides should not read as AI-written. New standing rule saved to memory:
+plain human voice, **no em dashes**, no AI-slop tells (no "here's the thing", no forced
+rule-of-three, no "not X but Y", no "to be fair" filler). Emojis were already banned by brand.
+- [x] **De-slopped all 8 existing guides + the hub.** Per-sentence rewrites (not find/replace) to strip every em dash and the AI tells. Facts, links, analytics, JSON-LD and structure preserved. Verified: 0 em dashes, JSON parses, no broken links on all 9 pages. (Ran as 7 parallel sub-agents, one per guide, then independently checked.)
+- [x] **Stripped footer em dashes site-wide** (all 20 pages): tagline now uses a comma, the est. line a middot. This was Tom's call to make the no-em-dash rule brand-wide for the footer template.
+- [x] **New guide — `how-often-should-you-bathe-your-dog.html`.** Probably the highest-demand query in the cluster; reinforces the whole "bathe less, clean between more" thesis. Clean voice from the start.
+- [x] **New guide — `how-to-get-mud-off-a-dog.html`.** High-intent, product-adjacent (let it dry, brush, spot-clean, keep a kit in the car). Clean voice.
+- Hub now lists **9 guides**; sitemap **15 → 16 URLs**. Both new guides have hero imagery + CTA.
+- [ ] **FOLLOW-UP for Tom's call:** `index.html` and the 4 funnel pages (the-kit / no-bath / the-mess / meet-moose) still have em dashes + some slop in their **body** copy (footers are fixed). The homepage is the most-seen page, so it matters most for the "don't look AI-written" goal. Not done yet — awaiting go-ahead, since it means rewriting live homepage/landing copy.
+- **Guide pipeline still queued:** sand & salt out of the coat; muddy dog in the car / keeping the car clean; the between-grooms routine; which parks/beaches allow dogs (global framing).
+
 ## v3 redesign shipped (20 Jul)
 
 Claude Design v3 handoff deployed live (commit a040402): floating product hero, scroll-driven
