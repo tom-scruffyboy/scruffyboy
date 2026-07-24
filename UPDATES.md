@@ -22,7 +22,7 @@ Seven of eight quick-win items shipped and live. Commits: 50956ba (perf+ads), 97
 - [x] **Shipping + returns pages.** On-brand, honest, **noindex until Tom signs off the terms** — return window (assumed 30d) + who pays return postage (assumed customer on change-of-mind, us on faults) flagged in HTML comments. Required by Google Merchant Center at launch.
 - [ ] **Account-level ads/Merchant prep — NEEDS TOM (I can't do these):**
   - **Google Merchant Center** — I'm not allowed to create accounts. Tom creates it + claims scruffyboy.com. Site is already MC-ready (policy pages, HTTPS, structured data). Can't list products until they're live anyway.
-  - **Meta domain verification** — needs Tom's Business Manager. I can retrieve the code + add the meta tag with his go-ahead, then he clicks Verify. Pixel + Stape CAPI already live.
+  - [x] **Meta domain verification — DONE 24 Jul.** scruffyboy.com added to the Scruffyboy business portfolio (id 2012079115936384) → Brand safety → Domains, verified via meta-tag (`facebook-domain-verification` in index.html head, committed). Shows "Verified". Optional next step when ads start: configure Aggregated Event Measurement (the 8 prioritised conversion events) on the domain + connect it to the pixel/ad account.
   - **Consent Mode v2 / banner** — held: only needed before EU/UK ad spend (STACK.md deliberately skipped a banner for HK launch scope). Decide when ads target EU/UK.
   - **Bing Webmaster Tools** — one-click GSC import (covers Bing + Yahoo HK ~6%); needs Tom's Microsoft login.
 
