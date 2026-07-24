@@ -57,7 +57,10 @@ rule-of-three, no "not X but Y", no "to be fair" filler). Emojis were already ba
 - [x] **Two more guides added since:** `how-to-get-mud-off-a-dog.html` and `get-sand-and-salt-out-of-a-dogs-coat.html` (both clean voice, hero + CTA). Hub now lists **10 guides**; sitemap **17 URLs**.
 - [x] **De-slop is now brand-wide (Tom's call).** Stripped em dashes from EVERY customer-facing page: `index.html`, all 4 funnel pages, and the utility/policy pages (thanks / confirmed / 404 / shipping / returns / privacy). Prose rewritten to natural punctuation; label microcopy (announce bar, eyebrows, sticky CTA) to middots; page titles to pipe separators; two attribution bylines cleaned. Jokes/product names/taglines preserved; JSON-LD still valid. Only internal noindex `brand.html` still contains em dashes, by design. Verified: 0 em dashes on all live customer pages.
 - [ ] **Flag for Tom:** `returns.html` contains "out of our paws" — a paw pun, which the brand rules forbid ("no paws/bones/pet clichés, ever"). Left as-is pending your call on rewording.
-- **Guide pipeline still queued:** muddy dog in the car / keeping the car clean; the between-grooms routine; which parks/beaches allow dogs (global framing).
+- [x] **BIG BATCH (Tom: "queue as many as you want and build them all") — 12 more guides, set now at 22.** All clean voice, all cross-linked, hero + CTA each, verified live:
+  car smell · rolled-in-something-disgusting · house smell · the between-grooms routine (cluster hub piece) · bathe-properly · shedding · puppy grooming · after-the-swim · matted fur · washing the dog's bed · winter road salt · camping.
+  Hub **22 cards**, sitemap **29 URLs**. Built via a template generator (scratchpad) so every page matches the live markup exactly; verified 0 em dashes / no AI tells / valid JSON-LD / no broken links / og JPGs exist on every page. New asset: moose-hero-window.jpg.
+- **Topic map is now ~saturated for between-grooms cleanup.** Next content should branch (breed-specific coats, seasonal refreshes, product-adjacent education at launch) rather than slice this cluster thinner. "Which parks/beaches allow dogs" dropped: needs real local research per country to be honest, thin as a global page.
 
 ## v3 redesign shipped (20 Jul)
 
