@@ -18,7 +18,14 @@ Seven of eight quick-win items shipped and live. Commits: 50956ba (perf+ads), 97
 - [x] **Ads-ready tracking.** Meta Advanced Matching (hashed email on signup Lead), ViewContent on the 4 funnel pages, GA4 `cta_click` + outbound-click events. Real Klaviyo signup.js otherwise intact.
 - [x] **Raster favicon set** (Fredoka mark): favicon-32 / apple-touch-icon-180 / icon-192 / icon-512; manifest + Organization-schema logo now raster.
 - [x] **Internal linking.** Every footer links all funnel pages + guides + policies (were nav-orphans).
-- [x] **Guides section (the discovery play).** guides.html hub + 2 substantial on-brand articles targeting the audit's whitespace: `drying-a-dog-in-humid-weather.html` (~1040w; zero competing content anywhere) and `clean-dog-paws-after-the-beach.html` (~850w; the HK post-adventure wedge). BlogPosting schema, indexed, internal links to no-bath/the-mess + #signup. Drying guide request-indexed in GSC; both + hub in sitemap (now 9 URLs).
+- [x] **Guides section (the discovery play) — now 5 articles + imagery.** guides.html hub + FIVE on-brand BlogPosting articles targeting the audit's whitespace, all indexed, internally cross-linked, with product CTAs, and each with an on-brand hero image (WebP from the approved v3 Moose library; og-images JPG for LinkedIn/iMessage):
+  1. `clean-a-dog-without-a-bath.html` (~935w) — waterless method → no-bath
+  2. `drying-a-dog-in-humid-weather.html` (~1040w) — ZERO competing content anywhere
+  3. `dog-still-smells-after-a-bath.html` (~790w) — problem-aware → funk fix
+  4. `clean-dog-paws-after-the-beach.html` (~850w) — HK post-adventure wedge
+  5. `hiking-hong-kong-with-your-dog.html` (~780w) — HK adventure → the-mess
+  Sitemap now **12 URLs**. Drying guide request-indexed in GSC; the rest discovered via the registered sitemap.
+  **Pipeline queued for next batches:** which HK beaches allow dogs (the non-gazetted rule); how to get mud off a dog fast; sand & salt out of the coat; the between-grooms routine. (Higgsfield available for bespoke net-new imagery if the reused v3 library gets stale.)
 - [x] **Shipping + returns pages.** On-brand, honest, **noindex until Tom signs off the terms** — return window (assumed 30d) + who pays return postage (assumed customer on change-of-mind, us on faults) flagged in HTML comments. Required by Google Merchant Center at launch.
 - [ ] **Account-level ads/Merchant prep — NEEDS TOM (I can't do these):**
   - **Google Merchant Center** — I'm not allowed to create accounts. Tom creates it + claims scruffyboy.com. Site is already MC-ready (policy pages, HTTPS, structured data). Can't list products until they're live anyway.
