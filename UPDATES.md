@@ -11,6 +11,21 @@ Work through in priority order. Mark items done here (or delete them) as you shi
 - [x] **Real date** (Jul 16). Tom confirmed **autumn 2026** — swapped into the announcement bar, title/meta/OG tags, marquee, and the FAQ answer (HTML + FAQPage structured data).
 - [x] **Founder voice line** (Jul 16). Tom's copy, verbatim: "i built this for the dirty dogs who love to play but also love the couch." — added to the Moose section with an orange rule and "— tom, founder" attribution.
 
+## 24 Jul — ecommerce / ads / search optimisation batch (shipped)
+
+Seven of eight quick-win items shipped and live. Commits: 50956ba (perf+ads), 978b48a (content+policy).
+- [x] **Images → WebP.** 29 PNGs converted, assets **49MB → 2.5MB (−95%)**. og/twitter images use JPG (WebP breaks LinkedIn/iMessage previews); on-page = WebP. Source PNGs removed from deploy (originals in the handoff zip). Preconnects added for GTM/Facebook, dns-prefetch for Clarity/Klaviyo. (Analytics scripts are already `async`/non-blocking — did NOT aggressively defer them; risk of undercounting > the gain now images are fixed.)
+- [x] **Ads-ready tracking.** Meta Advanced Matching (hashed email on signup Lead), ViewContent on the 4 funnel pages, GA4 `cta_click` + outbound-click events. Real Klaviyo signup.js otherwise intact.
+- [x] **Raster favicon set** (Fredoka mark): favicon-32 / apple-touch-icon-180 / icon-192 / icon-512; manifest + Organization-schema logo now raster.
+- [x] **Internal linking.** Every footer links all funnel pages + guides + policies (were nav-orphans).
+- [x] **Guides section (the discovery play).** guides.html hub + 2 substantial on-brand articles targeting the audit's whitespace: `drying-a-dog-in-humid-weather.html` (~1040w; zero competing content anywhere) and `clean-dog-paws-after-the-beach.html` (~850w; the HK post-adventure wedge). BlogPosting schema, indexed, internal links to no-bath/the-mess + #signup. Drying guide request-indexed in GSC; both + hub in sitemap (now 9 URLs).
+- [x] **Shipping + returns pages.** On-brand, honest, **noindex until Tom signs off the terms** — return window (assumed 30d) + who pays return postage (assumed customer on change-of-mind, us on faults) flagged in HTML comments. Required by Google Merchant Center at launch.
+- [ ] **Account-level ads/Merchant prep — NEEDS TOM (I can't do these):**
+  - **Google Merchant Center** — I'm not allowed to create accounts. Tom creates it + claims scruffyboy.com. Site is already MC-ready (policy pages, HTTPS, structured data). Can't list products until they're live anyway.
+  - **Meta domain verification** — needs Tom's Business Manager. I can retrieve the code + add the meta tag with his go-ahead, then he clicks Verify. Pixel + Stape CAPI already live.
+  - **Consent Mode v2 / banner** — held: only needed before EU/UK ad spend (STACK.md deliberately skipped a banner for HK launch scope). Decide when ads target EU/UK.
+  - **Bing Webmaster Tools** — one-click GSC import (covers Bing + Yahoo HK ~6%); needs Tom's Microsoft login.
+
 ## v3 redesign shipped (20 Jul)
 
 Claude Design v3 handoff deployed live (commit a040402): floating product hero, scroll-driven
