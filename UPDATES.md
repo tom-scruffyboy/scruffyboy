@@ -65,6 +65,17 @@ rule-of-three, no "not X but Y", no "to be fair" filler). Emojis were already ba
   **Hub restructured into 4 titled sections** (the everyday mess / coats and grooming / adventures and seasons / the industry) — 34 cards was too long as a flat list. Sitemap **41 URLs**. New og asset moose-hero-hk.jpg. All verified: 0 em dashes, no AI tells, valid JSON-LD, no broken links, all 200s live, hub visually checked.
 - **Topic map now genuinely broad AND deep.** Remaining sensible directions when wanted: more breed-family pages (spaniels, terriers/wire coats), a seasonal refresh cadence (update winter/summer guides each year, bump dateModified), and launch-time product pages. Content volume is no longer the constraint; domain authority and backlinks are. "Which parks/beaches allow dogs" stays dropped (needs real per-country research to be honest).
 
+## 25 Jul — discovery push: homepage strip + GSC indexing + guides in the welcome flow
+
+Tom's call: make the 34 guides work (site + email) instead of writing more.
+- [x] **Homepage "the between-grooms manual" strip** (commit 99f03e3): 4 featured guide cards (bathe-frequency, mud, waterless explainer, smells) + "all 34 guides →", between field notes and FAQ. Internal link equity from the strongest page. Verified live + visually.
+- [x] **GSC indexing push (Chrome-driven).** Request-indexing submitted for 10 priority URLs (waterless explainer, bathe-frequency, mud, curly coats, hot weather, dog-hates-baths, sand&salt, aisle POV, shampoo labels, guides hub). Spot-check: hot-weather guide was **fully indexed within the hour**. Sitemap re-submitted: was last read 17 Jul with only 2 discovered pages; now re-read same day, **41/41 discovered**. Also noted: first-ever organic search click landed 21–22 Jul.
+- [x] **Guides wired into the Klaviyo welcome flow** (flow Rwn4mS, templates edited via API, render-verified):
+  - welcome 2 (day 3) now ends with "the receipts": aisle POV + shampoo labels + waterless explainer cards.
+  - welcome 3 (day 7) adds "meanwhile, the method is free": mud + bathe-frequency + smells + all-guides link. **Also fixed a live bug: its CTA button pointed to scruffyboy.co (wrong domain) — now scruffyboy.com/#signup.**
+  - all three emails de-slopped (no em dashes, footers to middot style) in HTML and plaintext. UTM stays on at the flow level.
+- Still queued from the "what next" list: Pinterest as a distribution channel; Klaviyo sending domain + Bing + Merchant Center + policy sign-off (need Tom).
+
 ## v3 redesign shipped (20 Jul)
 
 Claude Design v3 handoff deployed live (commit a040402): floating product hero, scroll-driven
