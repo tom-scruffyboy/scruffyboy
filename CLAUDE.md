@@ -37,10 +37,23 @@ surfaces (Cowork, Code, Design): https://app.notion.com/p/3a06408d1af681658e4cc6
 
 ## How things work
 
-- `js/signup.js` is the entire app: Klaviyo client-API subscribe (list `Umf2ZE`,
-  double opt-in), honeypot, GA4 `generate_lead` + Meta `Lead` on success, redirect to
-  `thanks.html`. Confirmation email/success page are branded in Klaviyo (list-specific
-  consent pages). Welcome flow `Rwn4mS` is LIVE: immediate → day 3 → day 7.
+- **v3 site (shipped 20 Jul):** multi-page now — `index.html` (floating product hero,
+  scroll-driven "lineup", before/after slider, field notes) plus funnel pages
+  `the-kit.html`, `no-bath.html`, `the-mess.html`, `meet-moose.html`. Built in Claude
+  Design, shipped via Claude Code. Imagery in `assets/` (moose-*, cut-*, photo-*, act*,
+  step-*) is **AI-generated concept art**, an explicit Tom decision (overrides the "Moose
+  is a real dog" default for the pre-launch teaser — confirm before assuming for future work).
+- `js/hero.js` (v3, defer, every page): hero parallax, lineup scrollytelling, before/after
+  slider, IntersectionObserver reveals. All gated behind `prefers-reduced-motion`.
+- ⚠️ **The Claude Design handoff bundles a `js/signup.js` PREVIEW SHIM that captures nothing**
+  (its own header says do not deploy it — it fakes "you're on the list"). NEVER let it
+  overwrite the repo's real handler. When deploying a design handoff, keep the repo's signup.js.
+- `js/signup.js` (the REAL one, keep it) is the capture app: Klaviyo client-API subscribe
+  (list `Umf2ZE`, double opt-in), honeypot, GA4 `generate_lead` + Meta `Lead` on success,
+  redirect to `thanks.html`. Confirmation email/success page branded in Klaviyo. Welcome
+  flow `Rwn4mS` LIVE: immediate → day 3 → day 7. Nav "the range"/"meet moose" are on-page
+  ANCHORS (#range/#moose) — the 4 funnel pages are reachable by direct URL only (ad landing
+  pages), not site nav, and are not yet in sitemap.xml.
 - Tags on every public page: GA4 `G-BFMJFCEQC6`, Clarity `xn770a03sp`,
   Meta Pixel `1898777770792309`. `brand.html` is untracked + noindex (internal doc).
 - Tokens/design system: `css/site.css` top block, sourced from the Claude Design

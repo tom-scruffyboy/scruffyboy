@@ -11,6 +11,23 @@ Work through in priority order. Mark items done here (or delete them) as you shi
 - [x] **Real date** (Jul 16). Tom confirmed **autumn 2026** — swapped into the announcement bar, title/meta/OG tags, marquee, and the FAQ answer (HTML + FAQPage structured data).
 - [x] **Founder voice line** (Jul 16). Tom's copy, verbatim: "i built this for the dirty dogs who love to play but also love the couch." — added to the Moose section with an orange rule and "— tom, founder" attribution.
 
+## v3 redesign shipped (20 Jul)
+
+Claude Design v3 handoff deployed live (commit a040402): floating product hero, scroll-driven
+6-product "lineup", before/after drag slider, field-notes strip, 4 new funnel pages
+(the-kit / no-bath / the-mess / meet-moose), new `js/hero.js`. All imagery is AI-generated
+concept art (Tom's approved call). Verified live: all pages 200, analytics intact, signup
+posts to Klaviyo (curl-confirmed HTTP 202 — the browser's ad-blocker faked a failure), mobile OK.
+Kept the real Klaviyo signup.js — the bundle's was a no-op preview shim.
+
+Open follow-ups from the deploy:
+- [ ] **Funnel pages are nav-orphans + not in sitemap.** Header "the range"/"meet moose" are
+  on-page anchors (#range/#moose), so the-kit/no-bath/the-mess/meet-moose are direct-URL only.
+  Fine if they're ad landing pages; if they should be found organically, link them + add to sitemap.xml.
+- [ ] **9 unused PNGs shipped** (~13MB: act2-*, photo-*-01, moose-mud-floor) — referenced by nothing. Prune if not needed.
+- [ ] Note: the SEO items below (title/meta length, WebP, analytics deferral) still apply to the new v3 index.html — re-check against the new markup.
+- [ ] One test pending-profile created during deploy verification (te+v3curltest@hvngroup.co) — unconfirmed, harmless; delete from Klaviyo if tidying.
+
 ## From the 20 Jul SEO audit (full report: `06 - competitive & trends/SEO audit — 20 Jul 2026.md`)
 
 Site is technically clean — these are real but mostly small. The big one is #1.
