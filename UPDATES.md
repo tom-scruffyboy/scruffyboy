@@ -54,9 +54,10 @@ rule-of-three, no "not X but Y", no "to be fair" filler). Emojis were already ba
 - [x] **Stripped footer em dashes site-wide** (all 20 pages): tagline now uses a comma, the est. line a middot. This was Tom's call to make the no-em-dash rule brand-wide for the footer template.
 - [x] **New guide — `how-often-should-you-bathe-your-dog.html`.** Probably the highest-demand query in the cluster; reinforces the whole "bathe less, clean between more" thesis. Clean voice from the start.
 - [x] **New guide — `how-to-get-mud-off-a-dog.html`.** High-intent, product-adjacent (let it dry, brush, spot-clean, keep a kit in the car). Clean voice.
-- Hub now lists **9 guides**; sitemap **15 → 16 URLs**. Both new guides have hero imagery + CTA.
-- [ ] **FOLLOW-UP for Tom's call:** `index.html` and the 4 funnel pages (the-kit / no-bath / the-mess / meet-moose) still have em dashes + some slop in their **body** copy (footers are fixed). The homepage is the most-seen page, so it matters most for the "don't look AI-written" goal. Not done yet — awaiting go-ahead, since it means rewriting live homepage/landing copy.
-- **Guide pipeline still queued:** sand & salt out of the coat; muddy dog in the car / keeping the car clean; the between-grooms routine; which parks/beaches allow dogs (global framing).
+- [x] **Two more guides added since:** `how-to-get-mud-off-a-dog.html` and `get-sand-and-salt-out-of-a-dogs-coat.html` (both clean voice, hero + CTA). Hub now lists **10 guides**; sitemap **17 URLs**.
+- [x] **De-slop is now brand-wide (Tom's call).** Stripped em dashes from EVERY customer-facing page: `index.html`, all 4 funnel pages, and the utility/policy pages (thanks / confirmed / 404 / shipping / returns / privacy). Prose rewritten to natural punctuation; label microcopy (announce bar, eyebrows, sticky CTA) to middots; page titles to pipe separators; two attribution bylines cleaned. Jokes/product names/taglines preserved; JSON-LD still valid. Only internal noindex `brand.html` still contains em dashes, by design. Verified: 0 em dashes on all live customer pages.
+- [ ] **Flag for Tom:** `returns.html` contains "out of our paws" — a paw pun, which the brand rules forbid ("no paws/bones/pet clichés, ever"). Left as-is pending your call on rewording.
+- **Guide pipeline still queued:** muddy dog in the car / keeping the car clean; the between-grooms routine; which parks/beaches allow dogs (global framing).
 
 ## v3 redesign shipped (20 Jul)
 
