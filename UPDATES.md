@@ -47,7 +47,7 @@ Open follow-ups from the deploy:
 - [ ] **9 unused PNGs shipped** (~13MB: act2-*, photo-*-01, moose-mud-floor) — referenced by nothing. Prune if not needed.
 - [x] ~~title/meta length~~ **fixed 24 Jul**: index title 68→42ch, meta description 214→149ch;
   funnel-page descriptions trimmed to ~130-145ch; added PostalAddress (HK) to Organization JSON-LD.
-- [ ] **Still open (perf SEO, not yet done):** images→WebP/AVIF (the v3 PNGs are large — moose-*/act* are 2-2.8MB each), and deferring the analytics stack (253KB) to first-interaction/idle. These are the remaining items from the 20 Jul SEO audit.
+- [x] ~~images→WebP~~ **DONE 24 Jul** (49MB→2.5MB). Analytics deferral: decided AGAINST (scripts already async/non-blocking; deferral risks undercounting). See 24 Jul batch above.
 - [ ] Analytics: GA4/Clarity/Meta verified present on all 9 pages — no gaps, no change needed.
 - [ ] Test pending-profiles from verification (te+v3curltest@, te+v3deploytest@) — unconfirmed, harmless; delete from Klaviyo if tidying.
 
@@ -62,8 +62,8 @@ Site is technically clean — these are real but mostly small. The big one is #1
   not the repo. Deleting it would have broken server-side ads measurement. Same root cause as
   the earlier GA4 "503" false alarm — see HANDOVER §3.
 - [ ] **Cut the analytics tax.** Third-party scripts are **253KB of the 423KB page**; full load 5.07s (the site itself is fine — TTFB 713ms). Meta Pixel alone is 103KB, heavier than the hero photo; Clarity makes 4 requests and its tag took 3.1s even on a clean connection. Defer analytics to first-interaction/idle. *(Weight + timings were measured in a clean, extension-free browser, so these numbers stand — unlike the 503s above.)*
-- [ ] **Trim title + meta description.** Title is 66 chars (truncates ~60); description 164 (truncates ~155).
-- [ ] **Images → WebP/AVIF.** Hero 169KB, boot 159KB, raw JPEG, no `srcset`. ~50–70% saving on the LCP image.
+- [x] ~~Trim title + meta~~ **DONE 24 Jul** (title 42ch, desc 149ch).
+- [x] ~~Images → WebP~~ **DONE 24 Jul** — all v3 imagery converted (−95%).
 - [ ] **Organization schema:** add `PostalAddress` (HK); swap `logo` from favicon.svg to a 512px PNG (Google's logo guidance favours raster).
 - [ ] Mobile nits: Privacy link is 14×38px; marquee text is 11px. Bump both.
 - [ ] **Note: FAQPage schema is now inert.** Google retired FAQ rich results (docs removed 15 Jun 2026). Harmless to keep — just don't count it as a win.
