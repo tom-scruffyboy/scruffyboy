@@ -99,6 +99,10 @@
         .then(function (res) {
           if (res.status === 202) {
             if (typeof fbq === 'function') {
+              // Advanced Matching: re-init with the email (the pixel normalises +
+              // SHA-256 hashes it client-side before sending) so Lead + future
+              // events attribute to a real person → better audiences/lookalikes.
+              fbq('init', '1898777770792309', { em: email.toLowerCase() });
               fbq('track', 'Lead', { content_name: source });
             }
             if (typeof gtag === 'function') {
@@ -122,4 +126,27 @@
         });
     });
   });
+})();
+
+/* Lightweight engagement events for GA4 (and Meta) — CTA clicks + outbound social.
+   Delegated, defensive, non-blocking: never interferes with navigation. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a, button') : null;
+    if (!a) return;
+    var href = (a.getAttribute && a.getAttribute('href')) || '';
+
+    // primary CTA ("get first dibs" buttons / #signup links)
+    var isCTA = (a.classList && a.classList.contains('btn-primary')) || href === '#signup';
+    if (isCTA && typeof gtag === 'function') {
+      gtag('event', 'cta_click', { location: location.pathname });
+    }
+
+    // outbound link (socials, opt-out tools, etc.)
+    if (/^https?:\/\//.test(href) && a.hostname && a.hostname !== location.hostname) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click', { link_domain: a.hostname, link_url: href, outbound: true });
+      }
+    }
+  }, true);
 })();
