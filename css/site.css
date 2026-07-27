@@ -541,3 +541,60 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { .hero-cut img { animation: none; } }
 .range-card .ph.cutout { display: flex; align-items: center; justify-content: center; padding: 9%; }
 .range-card .ph.cutout img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 16px 12px rgba(22,19,16,.14)); }
+
+/* ================================================================
+   the testing department — job ad, application form, roster wall
+   ================================================================ */
+.jobad { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: clamp(28px,5vw,64px); align-items: start; }
+@media (max-width: 900px) { .jobad { grid-template-columns: 1fr; } }
+
+.jd-meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1px; background: var(--border-hairline); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); overflow: hidden; margin-top: var(--space-6); }
+.jd-meta > div { background: #fff; padding: var(--space-4) var(--space-5); }
+.jd-meta dt { font-family: var(--font-mono); font-weight: 600; font-size: 9.5px; letter-spacing: var(--tracking-eyebrow); text-transform: lowercase; color: var(--text-muted); margin: 0; }
+.jd-meta dd { margin: 6px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: -0.005em; }
+
+.jd-list { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.jd-list li { display: block; position: relative; padding-left: 1.5em; font-size: 14.5px; line-height: var(--leading-body); }
+.jd-list li::before { content: "—"; position: absolute; left: 0; top: 0; color: var(--orange-deep); }
+
+/* application form */
+.appform { background: #fff; border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: clamp(22px,3vw,32px); }
+.appform .formhead { font-family: var(--font-display); font-weight: 600; font-size: 21px; letter-spacing: var(--tracking-display); line-height: 1.2; }
+.appform .formnote { margin-top: var(--space-2); font-size: var(--text-caption); color: var(--text-muted); }
+.appform .fields { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-5); }
+.appform .fields .full { grid-column: 1 / -1; }
+@media (max-width: 560px) { .appform .fields { grid-template-columns: 1fr; } }
+.fld { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fld label { font-family: var(--font-mono); font-weight: 600; font-size: 9.5px; letter-spacing: var(--tracking-eyebrow); text-transform: lowercase; color: var(--text-muted); }
+.fld input, .fld select, .fld textarea {
+  font-family: var(--font-body); font-size: 14.5px; color: var(--black);
+  background: var(--surface-page); border: 1.5px solid var(--border-strong); border-radius: var(--radius-pill);
+  padding: 11px 16px; width: 100%; box-sizing: border-box;
+}
+.fld textarea { border-radius: var(--radius-media); min-height: 92px; resize: vertical; line-height: var(--leading-body); }
+.fld select { appearance: none; cursor: pointer; }
+.fld input::placeholder, .fld textarea::placeholder { color: var(--text-faint); }
+.fld input:focus, .fld select:focus, .fld textarea:focus { outline: 2px solid var(--orange-deep); outline-offset: 1px; }
+.fld .hint { font-size: 11.5px; color: var(--text-faint); }
+.fld input[type="file"] { padding: 10px 14px; border-radius: var(--radius-media); background: #fff; cursor: pointer; font-size: 13px; }
+.consent { display: flex; gap: var(--space-3); align-items: flex-start; margin-top: var(--space-5); font-size: 13px; line-height: 1.5; color: var(--text-body); }
+.consent input { flex: none; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--orange); }
+.appform .actions { margin-top: var(--space-5); display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+.appform .msg { font-size: 13px; display: none; }
+.appform .msg.error { display: block; color: var(--orange-deep); }
+.appform .msg.ok { display: block; color: var(--black); font-family: var(--font-display); font-weight: 600; }
+
+/* roster wall */
+.roster { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+@media (max-width: 900px) { .roster { grid-template-columns: repeat(2, 1fr); } }
+.agent { background: #fff; border: 1px solid var(--border-hairline); border-radius: var(--radius-card); overflow: hidden; display: flex; flex-direction: column; }
+.agent .pic { position: relative; }
+.agent .pic img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+.agent .no { position: absolute; top: 12px; left: 12px; font-family: var(--font-mono); font-weight: 600; font-size: 10px; letter-spacing: var(--tracking-eyebrow); background: var(--black); color: var(--cream); border-radius: var(--radius-pill); padding: 5px 10px; }
+.agent .body { padding: var(--space-4) var(--space-4) var(--space-5); display: flex; flex-direction: column; gap: 6px; }
+.agent .nm { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.005em; }
+.agent .loc { font-family: var(--font-mono); font-weight: 600; font-size: 9.5px; letter-spacing: var(--tracking-eyebrow); text-transform: lowercase; color: var(--text-muted); }
+.agent .ln { font-size: 13.5px; line-height: 1.5; color: var(--text-body); }
+.agent.open { background: transparent; border-style: dashed; align-items: center; justify-content: center; text-align: center; padding: var(--space-6) var(--space-4); min-height: 220px; }
+.agent.open .nm { color: var(--text-faint); }
+.agent.open .loc { color: var(--text-faint); }
