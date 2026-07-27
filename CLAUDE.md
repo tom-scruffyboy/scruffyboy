@@ -32,6 +32,12 @@ surfaces (Cowork, Code, Design): https://app.notion.com/p/3a06408d1af681658e4cc6
   or push scruffyboy work under any other account. The remote URL pins the username.
 - **Honesty rules from UPDATES.md**: never fabricate momentum numbers. The signup
   counter (`SPOTS` in `js/signup.js`) stays hidden until TAKEN ≥ 25, updated by hand.
+- **Voice: no em dashes, no AI-writing tells** in any copy (Tom's standing rule, 24 Jul).
+  Titles use "page name | scruffyboy"; label microcopy uses middots.
+- **Images ship right-sized**: hub thumbs are `thumb-*` (264w), homepage strip `card-*`
+  (560w), department cutouts `kit-*` (400w) — generate a variant rather than reusing a
+  full-size hero for a small slot. /assets/* is cached 7d, so replaced images need new
+  filenames.
 - **Don't put private API keys anywhere in this repo** — it's a static site; everything
   in it ships to the browser. The Klaviyo key in `signup.js` is the public site id.
 
@@ -50,10 +56,14 @@ surfaces (Cowork, Code, Design): https://app.notion.com/p/3a06408d1af681658e4cc6
   overwrite the repo's real handler. When deploying a design handoff, keep the repo's signup.js.
 - `js/signup.js` (the REAL one, keep it) is the capture app: Klaviyo client-API subscribe
   (list `Umf2ZE`, double opt-in), honeypot, GA4 `generate_lead` + Meta `Lead` on success,
-  redirect to `thanks.html`. Confirmation email/success page branded in Klaviyo. Welcome
-  flow `Rwn4mS` LIVE: immediate → day 3 → day 7. Nav "the range"/"meet moose" are on-page
-  ANCHORS (#range/#moose) — the 4 funnel pages are reachable by direct URL only (ad landing
-  pages), not site nav, and are not yet in sitemap.xml.
+  redirect to `/thanks`. It also handles the testing-department application form
+  (`form[data-application]`) via `api/apply.js` — the site's one serverless function
+  (photo → Vercel Blob, consent enforced server-side, profile → Klaviyo via private key;
+  secrets live in Vercel env vars only). Welcome flow `Rwn4mS` LIVE: immediate → +1d
+  guides → +2d why-we-exist → +4d lineup. ⚠️ Flows send CLONED templates — editing
+  library templates does NOT change sends; see KLAVIYO.md "27 Jul" section before
+  touching flow emails. Clean URLs site-wide (`cleanUrls` in vercel.json): internal
+  links have no .html; /page.html 308s to /page.
 - Tags on every public page: GA4 `G-BFMJFCEQC6`, Clarity `xn770a03sp`,
   Meta Pixel `1898777770792309`. `brand.html` is untracked + noindex (internal doc).
 - Tokens/design system: `css/site.css` top block, sourced from the Claude Design
@@ -68,5 +78,7 @@ surfaces (Cowork, Code, Design): https://app.notion.com/p/3a06408d1af681658e4cc6
   `.claude/launch.json` may contain a stale machine-specific mirror path.
 - Domain scruffyboy.com is LIVE (bought 17 Jul 2026; **registrar GoDaddy** — the NameBright
   nameservers it arrived with were the previous owner's and are gone). **All DNS is managed
-  in Vercel**, not at GoDaddy — add records there. Remaining from domain day: Klaviyo
-  sending domain (send.scruffyboy.com) + sender email switch; www → apex redirect. See `STACK.md`.
+  in Vercel**, not at GoDaddy — add records there. Domain-day items are ALL DONE (verified
+  27 Jul): send.scruffyboy.com sending domain active + verified, all emails send as
+  scruffyboy <hello@scruffyboy.com>, www → apex 308s, root has Google MX so hello@
+  receives. See `STACK.md` + `KLAVIYO.md`.

@@ -1,5 +1,14 @@
 # scruffyboy site — open update requests
 
+## 27 Jul — codebase optimisation review (Tom's ask)
+
+Measured first, then fixed what mattered:
+- [x] **Guides hub images: 1,199KB → 165KB (−86%).** The hub was shipping full-size hero webps for 132×88 thumbnails. Now 264px `thumb-*` variants. Homepage guides strip → 560px `card-*`; department kit grid → 400px `kit-*` (dept page −114KB). Verified live.
+- [x] **/assets/* now cached** 7d + stale-while-revalidate via vercel.json headers (previously default). Convention: replaced images ship under new filenames.
+- [x] **Stale docs corrected in CLAUDE.md** (they were actively misleading sessions): flow structure + flow-clone warning, clean URLs, api/apply.js, sending-domain/www items marked done, voice + image-variant conventions added.
+- Reviewed and left alone, deliberately: homepage's remaining ~1.3MB media is the before/after slider + field notes + lineup (the design's core, mostly lazy-loaded); js+css total 52KB (fine); hero.js guards fine; 547KB of unreferenced library assets ship in the deploy but are never downloaded by visitors (kept as the imagery library).
+- **Recommendations, not done (Tom's call):** self-host the Fredoka font (~100ms, removes Google Fonts dependency); revisit running three analytics tags on every page (GA4+Clarity+Pixel is the single largest third-party cost — Clarity is the one to question); consolidate the guides' repeated inline styles into css classes (maintenance, not speed); add rate limiting to api/apply if applications attract abuse (honeypot + size caps only today).
+
 ## 27 Jul (later) — clean URLs + brand-SERP fixes
 
 - [x] **Department page: "the kit you'd be testing" (Tom's ask).** Six-product grid between the job ad and the statement band, reusing the approved homepage lineup copy + product cutouts on white cards. Honest tester note ("final formulas and packaging can still change, that is the point of the department"), second apply CTA. No prices, no dates, per the signed-off content rules. Verified live.
