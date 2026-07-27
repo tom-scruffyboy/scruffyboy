@@ -1,0 +1,8 @@
+{
+  "name": "scruffyboy-site",
+  "private": true,
+  "description": "Static pre-launch site. The api/ directory holds Vercel serverless functions; there is still no build step for the site itself.",
+  "dependencies": {
+    "@vercel/blob": "^0.27.0"
+  }
+}

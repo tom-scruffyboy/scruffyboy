@@ -152,16 +152,37 @@
 })();
 
 /* Testing-department application form (form[data-application]).
-   Same public Klaviyo endpoint as the signup forms — applicants join the
-   waitlist list with the dog's details stored as profile properties, so the
-   applications are readable per-profile in Klaviyo and the double-opt-in +
-   welcome flow still apply. Consent is required client-side and recorded as
-   a property; server-side enforcement (and real photo upload) needs a small
-   backend — tracked in UPDATES.md. */
+   Two-step submit: (1) POST to /api/apply, which stores the photo in Blob,
+   enforces the image-rights consent server-side, and writes the full
+   application to a Klaviyo profile with a private key (so applications
+   survive an unclicked double-opt-in email); (2) the normal client-side
+   Klaviyo list subscribe, which triggers the confirmation email + welcome
+   flow for applicants who confirm. */
 (function () {
   var COMPANY_ID = 'Wv94NM';
   var LIST_ID = 'Umf2ZE';
   var ENDPOINT = 'https://a.klaviyo.com/client/subscriptions?company_id=' + COMPANY_ID;
+
+  // Downscale the photo on-device so uploads stay small (max edge 1600px, JPEG).
+  function shrinkImage(file) {
+    return new Promise(function (resolve) {
+      if (!file) return resolve(null);
+      var img = new Image();
+      var url = URL.createObjectURL(file);
+      img.onload = function () {
+        URL.revokeObjectURL(url);
+        var scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        var dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+        resolve({ b64: dataUrl.split(',')[1], type: 'image/jpeg' });
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(null); };
+      img.src = url;
+    });
+  }
 
   document.querySelectorAll('form[data-application]').forEach(function (form) {
     var button = form.querySelector('button[type="submit"]');
@@ -172,6 +193,10 @@
       if (!msg) return;
       msg.className = 'msg ' + kind;
       msg.textContent = text;
+    }
+    function fail() {
+      if (button) { button.disabled = false; button.textContent = buttonLabel; }
+      setMsg('error', 'that didn’t go through. try again, the internet has mud in it too.');
     }
 
     form.addEventListener('submit', function (e) {
@@ -189,60 +214,66 @@
       var f = new FormData(form);
       var email = String(f.get('email') || '').trim().toLowerCase();
       var source = form.getAttribute('data-application') || 'testing department';
+      var photoInput = form.querySelector('input[type="file"]');
+      var photoFile = photoInput && photoInput.files && photoInput.files[0];
 
       if (button) { button.disabled = true; button.textContent = 'submitting…'; }
 
-      fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', revision: '2026-07-15' },
-        body: JSON.stringify({
-          data: {
-            type: 'subscription',
-            attributes: {
-              custom_source: source + ' application',
-              profile: {
-                data: {
-                  type: 'profile',
-                  attributes: {
-                    email: email,
-                    first_name: String(f.get('human_name') || '').trim(),
-                    properties: {
-                      application: 'testing department',
-                      dog_name: String(f.get('dog_name') || '').trim(),
-                      dog_city: String(f.get('city') || '').trim(),
-                      dog_coat: String(f.get('coat') || ''),
-                      dog_instagram: String(f.get('instagram') || '').trim(),
-                      dog_mess: String(f.get('mess') || '').trim(),
-                      photo_link: String(f.get('photo_link') || '').trim(),
-                      image_rights_consent: f.get('consent') === 'yes' ? 'yes' : 'no',
-                      consent_recorded_at: new Date().toISOString(),
-                      applied_page: location.pathname || '/'
-                    }
-                  }
-                }
-              }
-            },
-            relationships: { list: { data: { type: 'list', id: LIST_ID } } }
-          }
+      shrinkImage(photoFile)
+        .then(function (photo) {
+          return fetch('/api/apply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              dog_name: f.get('dog_name'),
+              human_name: f.get('human_name'),
+              email: email,
+              city: f.get('city'),
+              coat: f.get('coat'),
+              instagram: f.get('instagram'),
+              mess: f.get('mess'),
+              consent: f.get('consent') === 'yes' ? 'yes' : 'no',
+              nickname: f.get('nickname') || '',
+              page: location.pathname,
+              photo_b64: photo ? photo.b64 : '',
+              photo_type: photo ? photo.type : ''
+            })
+          });
         })
-      })
         .then(function (res) {
-          if (res.status !== 202) throw new Error('status ' + res.status);
-          if (typeof fbq === 'function') {
-            fbq('init', '1898777770792309', { em: email });
-            fbq('track', 'SubmitApplication', { content_name: source });
-          }
-          if (typeof gtag === 'function') {
-            gtag('event', 'application_submit', { method: source, location: location.pathname });
-          }
-          setMsg('ok', 'application received. check your inbox to confirm your email. moose will not be reading it personally.');
-          form.reset();
-          if (button) { button.disabled = false; button.textContent = buttonLabel; }
+          if (!res.ok) throw new Error('apply ' + res.status);
+          return res.json();
         })
-        .catch(function () {
-          if (button) { button.disabled = false; button.textContent = buttonLabel; }
-          setMsg('error', 'that didn’t go through. try again, the internet has mud in it too.');
-        });
+        .then(function () {
+          // Step 2: list subscribe (confirmation email + welcome flow).
+          return fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', revision: '2026-07-15' },
+            body: JSON.stringify({
+              data: {
+                type: 'subscription',
+                attributes: {
+                  custom_source: source + ' application',
+                  profile: { data: { type: 'profile', attributes: { email: email } } }
+                },
+                relationships: { list: { data: { type: 'list', id: LIST_ID } } }
+              }
+            })
+          }).then(function (res) {
+            if (res.status !== 202) throw new Error('subscribe ' + res.status);
+            if (typeof fbq === 'function') {
+              fbq('init', '1898777770792309', { em: email });
+              fbq('track', 'SubmitApplication', { content_name: source });
+            }
+            if (typeof gtag === 'function') {
+              gtag('event', 'application_submit', { method: source, location: location.pathname });
+            }
+            setMsg('ok', 'application received. check your inbox to confirm your email. moose will not be reading it personally.');
+            form.reset();
+            if (button) { button.disabled = false; button.textContent = buttonLabel; }
+          });
+        })
+        .catch(fail);
     });
   });
 })();

@@ -125,11 +125,8 @@
               <textarea id="mess" name="mess" placeholder="be specific. trail mud, beach salt, the neighbour's pond, whatever that was." required></textarea>
             </div>
             <div class="fld full">
-              <label for="photo">evidence: a link to a photo of your dog at their worst</label>
-              <!-- INTERIM: was a file upload. A static site can't store uploads; direct
-                   upload needs a small backend (Vercel function + Blob), see UPDATES.md.
-                   Until then applicants paste a link (drive/photos/instagram). -->
-              <input id="photo" name="photo_link" type="url" placeholder="a google photos / drive / instagram link" autocomplete="off">
+              <label for="photo">evidence: a photo of your dog at their worst</label>
+              <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp">
               <span class="hint">the filthier the better. we are not judging the photography.</span>
             </div>
           </div>
