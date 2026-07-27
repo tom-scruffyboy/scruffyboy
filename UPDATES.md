@@ -1,5 +1,19 @@
 # scruffyboy site — open update requests
 
+## 27 Jul — v4 design handoff deployed: the testing department
+
+From "Scuffyboy Website 3.zip" (design_handoff_scruffyboy_site). All five new pages live:
+- [x] **testing-department.html** — field-tester recruitment ("the testing department is hiring", 20 positions) with the 10-field application form. **Form is wired for REAL** (the bundle's signup.js was the preview shim again — not deployed; the live `js/signup.js` gained a `form[data-application]` handler): submits to the same public Klaviyo endpoint, list `Umf2ZE`, `custom_source` "testing department application", dog fields stored as profile properties (dog_name / dog_city / dog_coat / dog_instagram / dog_mess / photo_link / image_rights_consent + consent_recorded_at), honeypot, distinct `application_submit` (GA4) + `SubmitApplication` (Meta) events, inline ok state. Applicants join the same double-opt-in list → welcome flow.
+- [x] **the-department.html** — the tester roster wall (Moose no. 001, open positions 002–004). Static; new testers added by hand as cards.
+- [x] **links.html** — link-in-bio page, published at the clean URL **scruffyboy.com/links** (vercel.json rewrite) → put that in the IG bio. Analytics added (bundle omitted it).
+- [x] **404.html + thanks.html** — replaced with the redesigned versions.
+- [x] css v4 delta appended; 9 new library assets converted to WebP; "the department" footer link added site-wide; whole bundle de-slopped (0 em dashes); titles to site convention.
+- [x] **Emails:** welcome 1 (`XsyZSF`) replaced with the designed branded version (de-dashed, reply-ask restored per KLAVIYO.md); monthly "mess report" shell created as template `UCif7F` (duplicate per send, edit the marked blocks).
+- [ ] **NEEDS DECISION/BACKEND (Tom):**
+  - **Photo upload.** A static site can't store file uploads, so the form's photo field ships as a *link* field (paste a Drive/Photos/IG link) with an HTML comment marking the swap. Real upload = small Vercel function + Blob storage (needs enabling in the Vercel dashboard). Say the word and I'll build it.
+  - **Consent enforcement is client-side only** (required checkbox + recorded as a profile property with timestamp). The README calls server-side enforcement legally load-bearing — that arrives with the same backend. Until then, treat the recorded property as the consent record.
+  - links.html and the department pages are noindex per design (recruitment via IG/social, not search) — flag if you want them indexed.
+
 Source: Competitive & Trend Analysis v1.0 (Google Drive, "06 - competitive & trends"), reviewed 16 Jul 2026 against the live page at scruffyboy.vercel.app. Re-generated weekly — check that doc for the latest before starting work, in case this list is stale.
 
 Work through in priority order. Mark items done here (or delete them) as you ship them so this stays a live task list, not an archive.

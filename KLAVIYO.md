@@ -99,3 +99,21 @@ day 3 → day 7 is the standard cadence, one job per email, never >1/day.
 verify the pipeline (their confirmation emails are in your inbox — click one to
 watch the full journey, then delete/suppress both profiles before reporting on
 list size).
+
+## v4 additions (27 Jul)
+
+- **Welcome 1 (`XsyZSF`) replaced** with the designed branded HTML email from the v4
+  handoff (dark header, hero, product cutout, perk block, IG CTA, `{{ organization.* }}`
+  + `{% unsubscribe_link %}` footer). Reply-ask paragraph kept (deliverability). De-dashed.
+- **New template `UCif7F` — "the mess report" monthly shell.** Duplicate per send, edit
+  the `EDIT PER SEND` comments (preheader, issue no., month, headline, intro, story
+  blocks, Moose verdict). Story block is a repeatable `<tr>`; keep the verdict block in
+  every send.
+- **Testing-department application form** posts to the same client-subscriptions
+  endpoint, list `Umf2ZE`, `custom_source` "testing department application". Dog fields
+  arrive as profile properties (`dog_name`, `dog_city`, `dog_coat`, `dog_instagram`,
+  `dog_mess`, `photo_link`, `image_rights_consent`, `consent_recorded_at`,
+  `applied_page`). Applicants get the standard double-opt-in + welcome flow. To review
+  applications: filter profiles where `application` = "testing department".
+- Events: applications fire GA4 `application_submit` + Meta `SubmitApplication`
+  (newsletter signups keep `generate_lead` / `Lead`) so the funnels stay separable.
