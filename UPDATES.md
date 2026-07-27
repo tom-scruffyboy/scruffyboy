@@ -2,6 +2,8 @@
 
 ## 27 Jul (later) — clean URLs + brand-SERP fixes
 
+- [x] **Main-menu nav upgrade (Tom's ask: the department deserves a tab).** Homepage nav: the range · guides · the department · meet moose. The same four-tab nav rolled out to 38 standard pages (guides hub, all articles, policies) that previously had a bare logo+CTA header. Funnel pages, the department landing pages, links and thanks keep their focused compact headers by design. Mobile keeps the existing <720px nav collapse (footer carries the full map there). Verified live across page types.
+
 - [x] **Clean URLs site-wide (Tom's catch: ".html doesn't look great").** vercel.json `cleanUrls`: Vercel serves /page and 308-redirects every /page.html, so all indexed/shared URLs keep working. Rewrote 633 internal hrefs + 156 absolute URLs (canonicals, og:url, JSON-LD), sitemap fully clean, signup redirect → /thanks, all four Klaviyo templates' links updated. Verified live: clean URLs 200, .html 308s, legacy HK-hiking chain ends at /hiking-with-your-dog, api + homepage unaffected.
 - [x] **Favicon in Google results (Tom's catch: generic globe icon).** Root cause: no /favicon.ico (Google's favicon crawler expects it) and no ≥48px icon link. Shipped favicon.ico (16/32/48 multi-size) + `sizes="192x192"` PNG icon link on all 49 pages. Google refreshes SERP favicons on its own crawl schedule, typically days.
 - [x] **"pet supplies"-adjacent phrasing:** homepage meta description + a new Organization schema description now say "dog grooming supplies" naturally (title untouched, voice intact) so category queries have something to match.
