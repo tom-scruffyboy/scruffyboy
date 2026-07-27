@@ -77,7 +77,7 @@
 
       var email = (input.value || '').trim();
       if (!validEmail(email)) {
-        setMsg('error', 'That email doesn’t look right — give it another go.');
+        setMsg('error', 'That email doesn’t look right. Give it another go.');
         input.focus();
         return;
       }
@@ -122,7 +122,7 @@
         .catch(function () {
           button.disabled = false;
           button.textContent = buttonLabel;
-          setMsg('error', 'That didn’t go through. Try again — the internet has mud in it too.');
+          setMsg('error', 'That didn’t go through. Try again, the internet has mud in it too.');
         });
     });
   });
@@ -235,13 +235,13 @@
           if (typeof gtag === 'function') {
             gtag('event', 'application_submit', { method: source, location: location.pathname });
           }
-          setMsg('ok', 'application received. check your inbox to confirm your email — moose will not be reading it personally.');
+          setMsg('ok', 'application received. check your inbox to confirm your email. moose will not be reading it personally.');
           form.reset();
           if (button) { button.disabled = false; button.textContent = buttonLabel; }
         })
         .catch(function () {
           if (button) { button.disabled = false; button.textContent = buttonLabel; }
-          setMsg('error', 'that didn’t go through. try again — the internet has mud in it too.');
+          setMsg('error', 'that didn’t go through. try again, the internet has mud in it too.');
         });
     });
   });
