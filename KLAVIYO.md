@@ -117,3 +117,21 @@ list size).
   applications: filter profiles where `application` = "testing department".
 - Events: applications fire GA4 `application_submit` + Meta `SubmitApplication`
   (newsletter signups keep `generate_lead` / `Lead`) so the funnels stay separable.
+
+## Retrieving testing-department applications (for social posts)
+
+Applications are Klaviyo profiles created instantly at submit time (private-key
+import via `api/apply.js` — they exist even if the applicant never clicks the
+double-opt-in confirm). Each carries: `dog_name`, `dog_city`, `dog_coat`,
+`dog_instagram`, `dog_mess`, `photo_url` (public Vercel Blob link, consented for
+publication), `image_rights_consent` + `consent_recorded_at`.
+
+- **In Klaviyo:** Audience → Profiles → filter where `application` equals
+  "testing department".
+- **Via Claude:** ask any session to pull testing-department applications — the
+  Klaviyo MCP filters profiles and returns the fields + photo links ready for a
+  post draft.
+- **Photos only:** Vercel dashboard → Storage → `scruffyboy-applications` →
+  applications/ folder.
+- Consent is enforced server-side (no consent = 422, nothing stored). The
+  credited handle for posts is `dog_instagram`.

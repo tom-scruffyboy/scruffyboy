@@ -9,9 +9,11 @@ From "Scuffyboy Website 3.zip" (design_handoff_scruffyboy_site). All five new pa
 - [x] **404.html + thanks.html** — replaced with the redesigned versions.
 - [x] css v4 delta appended; 9 new library assets converted to WebP; "the department" footer link added site-wide; whole bundle de-slopped (0 em dashes); titles to site convention.
 - [x] **Emails:** welcome 1 (`XsyZSF`) replaced with the designed branded version (de-dashed, reply-ask restored per KLAVIYO.md); monthly "mess report" shell created as template `UCif7F` (duplicate per send, edit the marked blocks).
-- [ ] **NEEDS DECISION/BACKEND (Tom):**
-  - **Photo upload.** A static site can't store file uploads, so the form's photo field ships as a *link* field (paste a Drive/Photos/IG link) with an HTML comment marking the swap. Real upload = small Vercel function + Blob storage (needs enabling in the Vercel dashboard). Say the word and I'll build it.
-  - **Consent enforcement is client-side only** (required checkbox + recorded as a profile property with timestamp). The README calls server-side enforcement legally load-bearing — that arrives with the same backend. Until then, treat the recorded property as the consent record.
+- [x] **BACKEND BUILT (27 Jul, same day).** Tom's call: applications + photos must be retrievable for socials.
+  - **api/apply.js** — the site's first serverless function. Stores the applicant's photo in Vercel Blob (store `scruffyboy-applications`, public URLs), enforces the image-rights consent + honeypot **server-side** (422 without consent; nothing stored), and writes the full application to a Klaviyo profile via a private key — so applications survive an unclicked double-opt-in confirm. Client downscales photos on-device (1600px JPEG) before upload; form regained its real file input.
+  - **Secrets in Vercel env vars only** (KLAVIYO_PRIVATE_KEY scoped to Profiles-only, created 27 Jul; BLOB_READ_WRITE_TOKEN from the store connect). Nothing in the repo.
+  - **Verified end-to-end twice** (direct API + real browser form with a file): photo lands in Blob and is publicly fetchable; Klaviyo profile appears instantly with every field + photo_url; confirmation email still goes out for the welcome-flow leg.
+  - **Retrieval for socials:** photos → Vercel dashboard → Storage → scruffyboy-applications (or the photo_url on each profile); applications → Klaviyo → Profiles, or ask Claude to pull profiles where `application` = "testing department" (Klaviyo MCP). Test profiles te+dept-test3/4 left in place as format examples, marked safe to delete.
   - links.html and the department pages are noindex per design (recruitment via IG/social, not search) — flag if you want them indexed.
 
 Source: Competitive & Trend Analysis v1.0 (Google Drive, "06 - competitive & trends"), reviewed 16 Jul 2026 against the live page at scruffyboy.vercel.app. Re-generated weekly — check that doc for the latest before starting work, in case this list is stale.
