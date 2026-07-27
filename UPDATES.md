@@ -2,6 +2,8 @@
 
 ## 27 Jul (later) — clean URLs + brand-SERP fixes
 
+- [x] **Department page: "the kit you'd be testing" (Tom's ask).** Six-product grid between the job ad and the statement band, reusing the approved homepage lineup copy + product cutouts on white cards. Honest tester note ("final formulas and packaging can still change, that is the point of the department"), second apply CTA. No prices, no dates, per the signed-off content rules. Verified live.
+
 - [x] **Main-menu nav upgrade (Tom's ask: the department deserves a tab).** Homepage nav: the range · guides · the department · meet moose. The same four-tab nav rolled out to 38 standard pages (guides hub, all articles, policies) that previously had a bare logo+CTA header. Funnel pages, the department landing pages, links and thanks keep their focused compact headers by design. Mobile keeps the existing <720px nav collapse (footer carries the full map there). Verified live across page types.
 
 - [x] **Clean URLs site-wide (Tom's catch: ".html doesn't look great").** vercel.json `cleanUrls`: Vercel serves /page and 308-redirects every /page.html, so all indexed/shared URLs keep working. Rewrote 633 internal hrefs + 156 absolute URLs (canonicals, og:url, JSON-LD), sitemap fully clean, signup redirect → /thanks, all four Klaviyo templates' links updated. Verified live: clean URLs 200, .html 308s, legacy HK-hiking chain ends at /hiking-with-your-dog, api + homepage unaffected.
