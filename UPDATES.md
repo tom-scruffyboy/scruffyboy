@@ -2,6 +2,8 @@
 
 ## 27 Jul — v4 design handoff deployed: the testing department
 
+- [x] **Homepage recruitment band (27 Jul, Tom's catch).** The homepage never mentioned the department. Added a black statement band between field notes and the guides strip: "the testing department is hiring.", meta chips (role / 20 positions / anywhere with dirt / reports to moose), apply CTA + roster link. Reuses the .statement pattern, no new CSS. Verified live (DOM-checked: renders dark, correct order fieldnotes → department → guides).
+
 From "Scuffyboy Website 3.zip" (design_handoff_scruffyboy_site). All five new pages live:
 - [x] **testing-department.html** — field-tester recruitment ("the testing department is hiring", 20 positions) with the 10-field application form. **Form is wired for REAL** (the bundle's signup.js was the preview shim again — not deployed; the live `js/signup.js` gained a `form[data-application]` handler): submits to the same public Klaviyo endpoint, list `Umf2ZE`, `custom_source` "testing department application", dog fields stored as profile properties (dog_name / dog_city / dog_coat / dog_instagram / dog_mess / photo_link / image_rights_consent + consent_recorded_at), honeypot, distinct `application_submit` (GA4) + `SubmitApplication` (Meta) events, inline ok state. Applicants join the same double-opt-in list → welcome flow.
 - [x] **the-department.html** — the tester roster wall (Moose no. 001, open positions 002–004). Static; new testers added by hand as cards.
