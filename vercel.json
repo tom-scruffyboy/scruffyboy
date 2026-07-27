@@ -1,5 +1,15 @@
 {
   "redirects": [
-    { "source": "/hiking-hong-kong-with-your-dog.html", "destination": "/hiking-with-your-dog.html", "permanent": true }
+    {
+      "source": "/hiking-hong-kong-with-your-dog.html",
+      "destination": "/hiking-with-your-dog.html",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/links",
+      "destination": "/links.html"
+    }
   ]
 }
