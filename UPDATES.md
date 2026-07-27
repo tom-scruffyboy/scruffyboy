@@ -1,5 +1,12 @@
 # scruffyboy site — open update requests
 
+## 27 Jul (later) — clean URLs + brand-SERP fixes
+
+- [x] **Clean URLs site-wide (Tom's catch: ".html doesn't look great").** vercel.json `cleanUrls`: Vercel serves /page and 308-redirects every /page.html, so all indexed/shared URLs keep working. Rewrote 633 internal hrefs + 156 absolute URLs (canonicals, og:url, JSON-LD), sitemap fully clean, signup redirect → /thanks, all four Klaviyo templates' links updated. Verified live: clean URLs 200, .html 308s, legacy HK-hiking chain ends at /hiking-with-your-dog, api + homepage unaffected.
+- [x] **Favicon in Google results (Tom's catch: generic globe icon).** Root cause: no /favicon.ico (Google's favicon crawler expects it) and no ≥48px icon link. Shipped favicon.ico (16/32/48 multi-size) + `sizes="192x192"` PNG icon link on all 49 pages. Google refreshes SERP favicons on its own crawl schedule, typically days.
+- [x] **"pet supplies"-adjacent phrasing:** homepage meta description + a new Organization schema description now say "dog grooming supplies" naturally (title untouched, voice intact) so category queries have something to match.
+- Google status at time of work (Tom's screenshot): #1 for "scruffyboy.com" with guides hub + meet-moose + an older-dog guide as extra results, and an accurate AI Overview citing the site. Ten days after domain purchase.
+
 ## 27 Jul — v4 design handoff deployed: the testing department
 
 - [x] **Homepage recruitment band (27 Jul, Tom's catch).** The homepage never mentioned the department. Added a black statement band between field notes and the guides strip: "the testing department is hiring.", meta chips (role / 20 positions / anywhere with dirt / reports to moose), apply CTA + roster link. Reuses the .statement pattern, no new CSS. Verified live (DOM-checked: renders dark, correct order fieldnotes → department → guides).
