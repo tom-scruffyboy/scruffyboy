@@ -7,7 +7,8 @@ Measured first, then fixed what mattered:
 - [x] **/assets/* now cached** 7d + stale-while-revalidate via vercel.json headers (previously default). Convention: replaced images ship under new filenames.
 - [x] **Stale docs corrected in CLAUDE.md** (they were actively misleading sessions): flow structure + flow-clone warning, clean URLs, api/apply.js, sending-domain/www items marked done, voice + image-variant conventions added.
 - Reviewed and left alone, deliberately: homepage's remaining ~1.3MB media is the before/after slider + field notes + lineup (the design's core, mostly lazy-loaded); js+css total 52KB (fine); hero.js guards fine; 547KB of unreferenced library assets ship in the deploy but are never downloaded by visitors (kept as the imagery library).
-- **Recommendations, not done (Tom's call):** self-host the Fredoka font (~100ms, removes Google Fonts dependency); revisit running three analytics tags on every page (GA4+Clarity+Pixel is the single largest third-party cost — Clarity is the one to question); consolidate the guides' repeated inline styles into css classes (maintenance, not speed); add rate limiting to api/apply if applications attract abuse (honeypot + size caps only today).
+- **DECIDED (Tom, 27 Jul): the full analytics stack stays.** GA4 + Clarity + Pixel all remain on every page — the plan is to use them properly once customers are flooding in, and the from-day-one data history is the point. Do not re-recommend trimming it.
+- **Recommendations, not done (Tom's call):** self-host the Fredoka font (~100ms, removes Google Fonts dependency); consolidate the guides' repeated inline styles into css classes (maintenance, not speed); add rate limiting to api/apply if applications attract abuse (honeypot + size caps only today).
 
 ## 27 Jul (later) — clean URLs + brand-SERP fixes
 
