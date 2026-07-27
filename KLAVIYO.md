@@ -135,3 +135,40 @@ publication), `image_rights_consent` + `consent_recorded_at`.
   applications/ folder.
 - Consent is enforced server-side (no consent = 422, nothing stored). The
   credited handle for posts is `dog_instagram`.
+
+## 27 Jul — sending domain + flow audit (IMPORTANT corrections to the notes above)
+
+**The "sender email still te@hvngroup.co" note above is STALE.** Audit findings:
+- **send.scruffyboy.com is ACTIVE and verified** (Settings → Domains; NS-delegated to
+  ns1-4.klaviyo.com, all records green — set up on domain day, the STACK.md
+  "remaining" note was stale too). Emails send via the dedicated domain.
+- **Every flow email already sends as scruffyboy <hello@scruffyboy.com>**, reply-to
+  the same. No personal-email touchpoints exist in the flow. hello@ receives via
+  Google MX on scruffyboy.com, so replies work.
+
+**CRITICAL operational lesson — flows send CLONED templates, not library templates.**
+The flow's four emails use clones: welcome 1 `TQHu4b`, welcome 1.5 (guides) `RtaL6C`,
+welcome 2 `WJ4rX3`, welcome 3 `Wdd9Mr`. Editing the standalone library templates
+(`XsyZSF`/`Yww6mk`/`TpHsUr`/`U8PGnZ`, kept as masters) does NOT change what sends.
+To edit a live flow email: flow editor → the email → Edit email (Ace code editor).
+Three traps: (1) the editor stores em dashes as `&mdash;` entities while the API
+returns them decoded — match both when patching; (2) always confirm the green
+"changes saved" toast, a Save click can silently miss; (3) after HTML edits, open
+Edit plain text → Auto-Generate so the text version re-syncs (it had a stale
+override carrying old content).
+
+**Bug found & fixed 27 Jul:** welcome 3's CTA button pointed to scruffyboy.co (wrong
+domain) from 16–27 Jul in the LIVE flow (the standalone-template fix on 24 Jul never
+reached the clone). Sent to 2 recipients in that window, 0 clicks. Now
+https://scruffyboy.com/#signup. All four flow emails also de-dashed, clean-URL'd,
+welcome 1 regained the deliberate reply-ask, welcome 2 gained "the receipts" guide
+links.
+
+**Flow structure now:** welcome 1 (immediate) → 1d → welcome 1.5 the guides → 2d →
+welcome 2 why-we-exist (+receipts) → 4d → welcome 3 lineup. Another surface added
+welcome 1.5 on 27 Jul ~03:50; coordinate via the Notion Session Log before editing.
+
+**Double-opt-in confirmation note:** Klaviyo suppresses repeat confirmation emails to
+the same inbox (+variants) during testing — te+ test addresses stop receiving them
+after a couple of sends. Not a production issue (real applicants = unique inboxes).
+Verified working 27 Jul: two branded confirmations delivered, then suppression kicked in.
