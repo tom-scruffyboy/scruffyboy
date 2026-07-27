@@ -92,7 +92,7 @@
       function goToThanks() {
         if (goToThanks.done) return;
         goToThanks.done = true;
-        window.location.href = 'thanks.html';
+        window.location.href = '/thanks';
       }
 
       subscribe(email, source)

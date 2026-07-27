@@ -2,14 +2,14 @@
   "redirects": [
     {
       "source": "/hiking-hong-kong-with-your-dog.html",
-      "destination": "/hiking-with-your-dog.html",
+      "destination": "/hiking-with-your-dog",
+      "permanent": true
+    },
+    {
+      "source": "/hiking-hong-kong-with-your-dog",
+      "destination": "/hiking-with-your-dog",
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/links",
-      "destination": "/links.html"
-    }
-  ]
+  "cleanUrls": true
 }
