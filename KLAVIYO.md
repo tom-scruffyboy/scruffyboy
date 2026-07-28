@@ -194,3 +194,17 @@ Verified working 27 Jul: two branded confirmations delivered, then suppression k
   update the Vercel env var and redeploy.
 - Verified end-to-end 28 Jul: my test + two real applications (Missy/NZ, Stella/
   Calgary) all delivered as inbox alerts within ~1 min of submission.
+
+## 28 Jul (later) — referral phase 0 touchpoints
+
+- **Welcome 1 (clone `TQHu4b`) now carries the share block** ("bring another dirty
+  dog." + wa.me prefill link + scruffyboy.com), inserted via the flow code editor
+  between the founder-pricing card and the instagram pill. Plain text auto-sync picked
+  it up on its own — the stale-override problem from 27 Jul has not returned; do not
+  hand-edit the plain text (that would break the sync).
+- **Hosted double-opt-in success page** ends with "Next: bring another dirty dog.
+  Instructions just landed in your inbox." pointing at that email. Re-verified 28 Jul:
+  the consent-pages editor still has NO custom-URL redirect and NO link tool in text
+  blocks (only bold/italic/lists/image), so /confirmed cannot be reached from the
+  confirm click. If Klaviyo ever adds a success-page redirect, point it at
+  https://scruffyboy.com/confirmed (the page carries the full native-share module).

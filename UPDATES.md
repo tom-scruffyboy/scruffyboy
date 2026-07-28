@@ -1,5 +1,32 @@
 # scruffyboy site — open update requests
 
+## 28 Jul — referral phase 0: the share moment (Tom's ask, from the Referral Proposal v1.0 §3 + §7)
+
+- [x] **thanks.html rebuilt around the confirm ask.** H1 is now "check your inbox." with
+  the one-click-left framing (fixes the ~20% double-opt-in leak the proposal flags);
+  spam/promotions nudge; the old you're-in copy retired (confirmed.html owns that state).
+- [x] **Share moment on thanks + confirmed** ("bring another dirty dog." section):
+  native share sheet via navigator.share where the browser has one; copy-link with
+  "link copied" feedback everywhere; wa.me WhatsApp button only when there is no native
+  sheet (desktop fallback per the global-audience decision). Prefill text verbatim from
+  the proposal. GA4 `share` events fire with method = native / copy / whatsapp for the
+  share-method split the proposal wants measured. New `js/share.js`; no backend changes.
+- [x] **Bug found while verifying live: `hidden` attribute lost to `.btn { display }`**
+  (all three buttons rendered at once). Global fix in site.css: `[hidden]{display:none
+  !important}`. Verified live after: correct buttons per capability.
+- [x] **The Klaviyo leg (Tom logged in mid-session).** Re-checked the consent-pages
+  editor: still no custom-URL redirect and no link button in text blocks, so
+  confirmed.html stays unreachable from the confirm click (it still works as a direct
+  URL, and welcome 1 could link to it later). Shipped instead:
+  - **Hosted success page** (the page people actually see post-confirm) now ends
+    "Next: bring another dirty dog. Instructions just landed in your inbox." Published,
+    green toast confirmed.
+  - **Welcome 1 (flow clone TQHu4b) gained the share block**: "bring another dirty
+    dog." heading + "send it on whatsapp" (prefilled wa.me) · "or send the link:
+    scruffyboy.com", styled to the template, inserted between the founder-pricing card
+    and the instagram pill. Saved with toast, preview verified, plain-text auto-sync
+    confirmed intact (it picked up the block on its own — no stale override).
+
 ## 28 Jul — application count + real-time alerts (Tom's ask)
 
 Tom asked: how many applications so far, and how to access/be notified conveniently.
