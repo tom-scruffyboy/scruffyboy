@@ -1,5 +1,8 @@
 /* scruffyboy — site styles. tokens carried verbatim from the design system. */
 
+/* the hidden attribute always wins, even over display rules on .btn etc. */
+[hidden] { display: none !important; }
+
 /* ---------- tokens: colors ---------- */
 :root {
   --orange: #FF6B35;
