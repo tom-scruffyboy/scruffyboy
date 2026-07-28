@@ -1,5 +1,29 @@
 # scruffyboy site — open update requests
 
+## 28 Jul — application count + real-time alerts (Tom's ask)
+
+Tom asked: how many applications so far, and how to access/be notified conveniently.
+- **Count at time of work: 8 real applications** (BEAU/Barrie ON · Ralph/Tamworth UK ·
+  Edie+Bear+Meryl+Fleur/Cornwall · Onyx/Toronto · Riggs/Alberta · Eddie/Kanata ·
+  Missy/New Zealand · Stella/Calgary — the last two arrived mid-session and proved the
+  new alerts live). 4 of the first 6 had photos in Blob; 2 real applicants had empty
+  photo_url (suspected HEIC/canvas decode failure on some phones — flagged, not fixed).
+- [x] **Real-time email alerts built.** api/apply.js now fires a Klaviyo event
+  ("Testing Department Application", metric `SubHVB`) per application (fire-and-forget,
+  can never fail a submit; commit 6a0cf8f). New LIVE flow **"application alerts
+  (internal)" (`WyGh3t`)**: metric trigger (allow re-entry) → internal alert email to
+  te@hvngroup.co with dog/human/city/coat/instagram/mess/photo_url. Klaviyo requires a
+  one-time Notification Recipient Confirmation — confirmed 28 Jul. Verified: test +
+  two real applications all landed as "new tester application: name (city)" emails.
+- [x] **Klaviyo private key rotated to v2** ("scruffyboy site backend v2 profiles
+  events", Profiles + Events scopes — the old key couldn't write events). Vercel env
+  updated + redeployed; old v1 key deleted from Klaviyo.
+- **Access paths (the answer to Tom's question):** (1) inbox alerts, real-time, now
+  live; (2) ask any Claude session to pull Klaviyo profiles where
+  `application` = "testing department"; (3) Klaviyo → Audience → Profiles for the
+  full list; photos in Vercel → Storage → scruffyboy-applications.
+- Test profiles te+dept-test3–10 remain in Klaviyo, marked safe to delete.
+
 ## 27 Jul — codebase optimisation review (Tom's ask)
 
 Measured first, then fixed what mattered:

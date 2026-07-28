@@ -172,3 +172,25 @@ welcome 1.5 on 27 Jul ~03:50; coordinate via the Notion Session Log before editi
 the same inbox (+variants) during testing — te+ test addresses stop receiving them
 after a couple of sends. Not a production issue (real applicants = unique inboxes).
 Verified working 27 Jul: two branded confirmations delivered, then suppression kicked in.
+
+## 28 Jul — internal application alerts + key rotation
+
+**Real-time alerts for testing-department applications are LIVE.**
+- api/apply.js fires event **"Testing Department Application"** (metric `SubHVB`) per
+  application, after the profile import. Fire-and-forget: an event failure is logged
+  but never fails the submit.
+- Flow **"application alerts (internal)" (`WyGh3t`)**, LIVE: metric trigger with
+  Allow re-entry → Internal alert email → te@hvngroup.co. Subject
+  `new tester application: {{ event.dog_name }} ({{ event.city }})`; body lists
+  dog/human/city/coat/instagram/mess/photo via `{{ event.* }}`.
+- **Gotcha: internal alerts don't deliver until the recipient clicks Klaviyo's
+  one-time "Notification Recipient Confirmation" email** (from hello@, subject of that
+  name). Confirmed for te@hvngroup.co on 28 Jul. Alerts fired before confirmation are
+  dropped, not queued. If a new recipient is ever added, they must confirm too.
+- **Key rotation:** the original private key (Profiles-only) couldn't write events —
+  events silently failed. Replaced by **"scruffyboy site backend v2 profiles events"**
+  (Profiles + Events, full access); Vercel `KLAVIYO_PRIVATE_KEY` updated + redeployed;
+  v1 key deleted from Klaviyo 28 Jul. Rotate in Klaviyo settings → API keys, then
+  update the Vercel env var and redeploy.
+- Verified end-to-end 28 Jul: my test + two real applications (Missy/NZ, Stella/
+  Calgary) all delivered as inbox alerts within ~1 min of submission.
