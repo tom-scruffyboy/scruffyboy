@@ -99,5 +99,40 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ ok: false, error: 'profile store failed' });
   }
 
+  // Fire a Klaviyo event so a flow can send Tom an internal alert per
+  // application. Fire-and-forget: an event failure never fails the submit.
+  try {
+    const eres = await fetch('https://a.klaviyo.com/api/events/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+        revision: '2024-10-15',
+        Authorization: 'Klaviyo-API-Key ' + process.env.KLAVIYO_PRIVATE_KEY
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'event',
+          attributes: {
+            metric: { data: { type: 'metric', attributes: { name: 'Testing Department Application' } } },
+            profile: { data: { type: 'profile', attributes: { email: email } } },
+            properties: {
+              dog_name: clean(b.dog_name, 100),
+              human_name: clean(b.human_name, 100),
+              city: clean(b.city, 100),
+              coat: clean(b.coat, 100),
+              instagram: clean(b.instagram, 100),
+              mess: clean(b.mess, 2000),
+              photo_url: photoUrl
+            }
+          }
+        }
+      })
+    });
+    if (!eres.ok) console.error('klaviyo event failed', eres.status);
+  } catch (e) {
+    console.error('klaviyo event error', e && e.message);
+  }
+
   return res.status(200).json({ ok: true, photo_url: photoUrl });
 };
