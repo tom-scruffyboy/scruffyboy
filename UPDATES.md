@@ -1,5 +1,13 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (last one) — email WhatsApp links skip click tracking (Tom's catch)
+
+- [x] wa.me only deep-links into the WhatsApp app (message intact) on a DIRECT tap;
+  Klaviyo's tracking redirect broke the universal link, dumping people on the web
+  interstitial with the text lost. Both flow emails (welcome 1 + milestone) now carry
+  clicktracking=off on their WhatsApp anchors; rule recorded in KLAVIYO.md. Already
+  delivered emails keep old links; future sends are fixed.
+
 ## 29 Jul (late night) — mobile hamburger + the missing hero bottles (Tom's catches)
 
 - [x] **Mobile hamburger nav shipped.** Injected by hero.js on all 40 pages that carry

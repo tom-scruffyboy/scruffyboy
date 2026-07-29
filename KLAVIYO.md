@@ -234,3 +234,20 @@ Verified working 27 Jul: two branded confirmations delivered, then suppression k
   Until that exists, run confirms manually (curl, same header) for new confirmed members.
 - **Queue positions 1–6 seeded** for the pre-existing confirmed members in join order.
   Positions only ever come from /api/confirm-referral (Redis INCR) — never hand-set.
+
+## 29 Jul — WhatsApp links in emails must skip click tracking
+
+Tom's catch: tapping "send it on whatsapp" in an email dumped him on the WhatsApp
+web interstitial and the app opened without the message. Cause: wa.me deep-links
+into the app (with the prefilled text) only on a DIRECT tap; Klaviyo's click-tracking
+redirect (ctrk.klclick3.com) breaks the universal link, so iOS falls back to the web
+page and the handoff loses the text.
+
+Fix: add `clicktracking=off` to the anchor (Klaviyo saves it as
+clicktracking="off"). Applied to both flow emails that carry the link: welcome 1
+(XjRYF2) and the milestone email (R9fvmW). RULE for future emails: any wa.me (or
+other app deep-link) anchor gets clicktracking=off. Tradeoff: those specific links
+stop appearing in click stats.
+
+Note: emails ALREADY DELIVERED keep the old tracked links. Only sends after 29 Jul
+carry the fix, so retest with a fresh send, not an old inbox email.
