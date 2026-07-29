@@ -37,7 +37,19 @@ blocked on Tom (below).
   referred_by. Proven end-to-end in production: a test list-join fired the flow →
   webhook → position 7 assigned + referrer credited automatically. The loop is closed;
   test member removed from the list after.
-- Test profiles from this build: te+ref-test1/2 (delete whenever).
+- [x] **Full dress rehearsal (29 Jul, Tom's ask):** real browser visit via a ?ref link →
+  cookie → real form submit → /thanks with personal share link → simulated confirm
+  (list join, same trigger as the confirm click) → position assigned + referrer
+  credited → at 5 referrals the milestone email DELIVERED to the inbox with the
+  correct tier copy ("the dirty feet foam"). One finding: unconfirmed profiles are
+  suppressed by Klaviyo, so milestone emails skip them ("Skipped: Person Suppressed")
+  until they click confirm — correct consent behaviour, no fix needed; real referrers
+  are confirmed by definition. All test artifacts cleaned after: test members removed
+  from the list, all test Redis keys deleted, queue counter reset to 6 (real members
+  hold 1-6, next real confirm gets 7).
+- Small flag: privacy page line "The signup form talks directly to Klaviyo" is now
+  slightly stale (it goes via /api/subscribe first, then Klaviyo) — tweak whenever.
+- Test profiles from this build: te+ref-test1/2/e2e/m3/m4/m5 in Klaviyo (delete whenever).
 
 ## 28 Jul — referral phase 0: the share moment (Tom's ask, from the Referral Proposal v1.0 §3 + §7)
 
