@@ -93,6 +93,16 @@
       t.style.setProperty('--rd', (i % 3) * 70 + 'ms');
       io.observe(t);
     });
+    /* Anchor arrivals (e.g. /#department) can race the observer during the
+       browser's long smooth scroll and leave on-screen content unrevealed.
+       After the scroll settles, reveal anything already in the viewport. */
+    var settle = function () {
+      targets.forEach(function (t) {
+        var r = t.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) t.classList.add('in');
+      });
+    };
+    if (location.hash) { setTimeout(settle, 1000); setTimeout(settle, 2600); }
   }
 })();
 
