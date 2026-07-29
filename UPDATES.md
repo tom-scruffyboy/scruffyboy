@@ -16,8 +16,11 @@
   (roster-moose.webp), jungle shot on the-department hero, Moose + Kobe rain shot on
   the testing-department hero, soaked close-up on meet-moose hero (preload updated).
   CLAUDE.md imagery note amended: prefer real photos when Tom supplies them.
-- Pending: photo-request email to BEAU (Vanessa) + the Cornwall four (Ann) — drafted,
-  awaiting Tom's go; Claude Design prompt handed over in chat for the intro posts.
+- [x] **Photo-request campaign SENT** (Tom's go): "one thing missing from your
+  application: the dog." to Vanessa (BEAU) + Ann (Cornwall four), list TkvUbP,
+  template RpqL2U, reply-to hello@. When photos arrive by reply, add both cards to
+  the wall (positions 012+) and fold them into the intro-post run.
+- Claude Design prompt handed over in chat for the intro posts.
 
 ## 29 Jul (later still) — roster nav, moose breed, fast lane page, roster intake prep (Tom's asks)
 
