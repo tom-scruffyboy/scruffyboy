@@ -1,5 +1,29 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (night) — full site review: performance + design system (Tom's ask)
+
+Measured and swept every page. Verdict: healthy. Fixed in the pass:
+- [x] **Anchor-arrival reveal bug (real find):** landing on /#department (shared links,
+  "meet the roster" nav) raced the IntersectionObserver during the long smooth scroll
+  and could leave on-screen content invisible until the next scroll. hero.js now
+  re-checks and reveals in-viewport content after the scroll settles. Verified live.
+- [x] **3 below-fold images un-lazied:** index before/after under-image (158KB),
+  meet-moose + the-mess full-bleed bands. Homepage eager image weight 237KB → 79KB.
+Findings, no action taken (Tom's call):
+- **Design tokens vs written rule:** .eyebrow text ships in deep orange #E24E17 from
+  the design system itself, but the written rule says deep orange is hover/pressed
+  ONLY. Recommend amending the rule to allow eyebrow text (changing the token would
+  reskin every page). Also #e9e0cd guide-card placeholder tint is off the 4-colour
+  list (reads as cream family).
+- **Homepage architecture:** 12 sections, ~13 viewports; rhythm (cream/black/orange)
+  intact, scrollytelling is 40% of the height. CTA count is 6 primaries; "join and
+  get your link" + "get first dibs" both target #signup. If Tom wants it calmer, the
+  first cut is slimming the homepage fast-lane section to head + line + CTAs (the
+  /referral page carries the detail). Not urgent.
+- Clean sweeps: display lowercase everywhere; no em dashes/emoji outside brand.html
+  (internal); no gradients; no off-palette colours beyond the two flagged; third-party
+  ~104KB (analytics stack, stays per Tom's standing decision).
+
 ## 29 Jul (evening) — intake 1 LIVE: roster published, acceptances sent, real photos
 
 - [x] **Ten field testers published to the roster** (Tom: accept all with photos):
