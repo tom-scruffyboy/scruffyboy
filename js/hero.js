@@ -95,3 +95,16 @@
     });
   }
 })();
+
+/* Referral capture (phase 1): a visit via someone's share link (?ref=CODE)
+   sets a 60-day cookie; the signup handler sends it so the friend's confirm
+   credits the referrer. Runs on every page because shares and ads can land
+   anywhere, not just the homepage. */
+(function () {
+  try {
+    var m = location.search.match(/[?&]ref=([a-z0-9]{4,20})(&|$)/i);
+    if (!m) return;
+    document.cookie = 'sb_ref=' + m[1].toLowerCase() +
+      ';max-age=' + 60 * 24 * 3600 + ';path=/;SameSite=Lax';
+  } catch (e) { /* never break a page over a cookie */ }
+})();

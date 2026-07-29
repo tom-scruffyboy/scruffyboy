@@ -1,15 +1,11 @@
-/* scruffyboy — Klaviyo signup handler.
-   Posts to Klaviyo's public client-subscriptions endpoint (no backend needed).
-   List is double opt-in: Klaviyo emails a confirmation; the profile only gets
-   marketing consent after they click it. */
+/* scruffyboy — signup handler (referral phase 1).
+   Posts to our own /api/subscribe, which stores referral code + referred_by
+   on the profile and then triggers the normal Klaviyo double-opt-in list
+   subscribe server-side. The confirmation-email step is unchanged. */
 (function () {
-  var COMPANY_ID = 'Wv94NM';           // Klaviyo public API key (safe to expose)
-  var LIST_ID = 'Umf2ZE';              // "scruffyboy — pre-launch waitlist"
-  var ENDPOINT = 'https://a.klaviyo.com/client/subscriptions?company_id=' + COMPANY_ID;
-
-  // Signup counter. Klaviyo's list count isn't readable with a public key, so
-  // TAKEN is updated by hand from the list dashboard. The counter only renders
-  // once TAKEN reaches SHOW_AT — a low number reads worse than no number.
+  // Signup counter. TAKEN is updated by hand from the list dashboard. The
+  // counter only renders once TAKEN reaches SHOW_AT — a low number reads
+  // worse than no number.
   var SPOTS = { TAKEN: 0, TOTAL: 500, SHOW_AT: 25 };
 
   if (SPOTS.TAKEN >= SPOTS.SHOW_AT) {
@@ -19,30 +15,41 @@
     });
   }
 
-  function subscribe(email, source) {
-    return fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', revision: '2026-07-15' },
-      body: JSON.stringify({
-        data: {
-          type: 'subscription',
-          attributes: {
-            custom_source: source,
-            profile: {
-              data: {
-                type: 'profile',
-                attributes: {
-                  email: email,
-                  properties: { signup_page: location.pathname || '/' }
-                }
-              }
-            }
-          },
-          relationships: { list: { data: { type: 'list', id: LIST_ID } } }
-        }
-      })
-    });
+  function refCookie() {
+    var m = document.cookie.match(/(?:^|; )sb_ref=([a-z0-9]{4,20})/);
+    return m ? m[1] : '';
   }
+
+  // Remember who signed up on this device so thanks/confirmed can show the
+  // personalised share link and queue position. Local only, never sent on.
+  function remember(email, data) {
+    try {
+      localStorage.setItem('sb_email', email);
+      if (data && data.referral_url) localStorage.setItem('sb_url', data.referral_url);
+      if (data && data.referral_code) localStorage.setItem('sb_code', data.referral_code);
+    } catch (e) { /* private mode etc. */ }
+  }
+
+  window.sbSubscribe = function (email, source) {
+    return fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        source: source,
+        page: location.pathname || '/',
+        ref: refCookie(),
+        nickname: ''
+      })
+    }).then(function (res) {
+      if (!res.ok) throw new Error('subscribe ' + res.status);
+      return res.json().then(function (data) {
+        remember(email, data);
+        return data;
+      });
+    });
+  };
+  var subscribe = window.sbSubscribe;
 
   function validEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -96,27 +103,23 @@
       }
 
       subscribe(email, source)
-        .then(function (res) {
-          if (res.status === 202) {
-            if (typeof fbq === 'function') {
-              // Advanced Matching: re-init with the email (the pixel normalises +
-              // SHA-256 hashes it client-side before sending) so Lead + future
-              // events attribute to a real person → better audiences/lookalikes.
-              fbq('init', '1898777770792309', { em: email.toLowerCase() });
-              fbq('track', 'Lead', { content_name: source });
-            }
-            if (typeof gtag === 'function') {
-              gtag('event', 'generate_lead', {
-                method: source,
-                event_callback: goToThanks,
-                event_timeout: 700
-              });
-              setTimeout(goToThanks, 800);
-            } else {
-              goToThanks();
-            }
+        .then(function () {
+          if (typeof fbq === 'function') {
+            // Advanced Matching: re-init with the email (the pixel normalises +
+            // SHA-256 hashes it client-side before sending) so Lead + future
+            // events attribute to a real person → better audiences/lookalikes.
+            fbq('init', '1898777770792309', { em: email.toLowerCase() });
+            fbq('track', 'Lead', { content_name: source });
+          }
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+              method: source,
+              event_callback: goToThanks,
+              event_timeout: 700
+            });
+            setTimeout(goToThanks, 800);
           } else {
-            throw new Error('status ' + res.status);
+            goToThanks();
           }
         })
         .catch(function () {
@@ -159,10 +162,6 @@
    Klaviyo list subscribe, which triggers the confirmation email + welcome
    flow for applicants who confirm. */
 (function () {
-  var COMPANY_ID = 'Wv94NM';
-  var LIST_ID = 'Umf2ZE';
-  var ENDPOINT = 'https://a.klaviyo.com/client/subscriptions?company_id=' + COMPANY_ID;
-
   // Downscale the photo on-device so uploads stay small (max edge 1600px, JPEG).
   function shrinkImage(file) {
     return new Promise(function (resolve) {
@@ -245,22 +244,9 @@
           return res.json();
         })
         .then(function () {
-          // Step 2: list subscribe (confirmation email + welcome flow).
-          return fetch(ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', revision: '2026-07-15' },
-            body: JSON.stringify({
-              data: {
-                type: 'subscription',
-                attributes: {
-                  custom_source: source + ' application',
-                  profile: { data: { type: 'profile', attributes: { email: email } } }
-                },
-                relationships: { list: { data: { type: 'list', id: LIST_ID } } }
-              }
-            })
-          }).then(function (res) {
-            if (res.status !== 202) throw new Error('subscribe ' + res.status);
+          // Step 2: list subscribe (confirmation email + welcome flow), via
+          // /api/subscribe so applicants get referral codes + credit too.
+          return window.sbSubscribe(email, source + ' application').then(function () {
             if (typeof fbq === 'function') {
               fbq('init', '1898777770792309', { em: email });
               fbq('track', 'SubmitApplication', { content_name: source });
