@@ -31,7 +31,10 @@
     native.hidden = false;
     if (wa) wa.hidden = true;
     native.addEventListener('click', function () {
-      navigator.share({ text: SHARE_TEXT, url: SHARE_URL })
+      /* One text string, not {text, url}: with separate fields the Apple share
+         sheet hands WhatsApp (and some other targets) only the url and drops
+         the message. Merged, the whole message survives everywhere. */
+      navigator.share({ text: SHARE_TEXT + ' ' + SHARE_URL })
         .then(function () { track('native'); })
         .catch(function () {}); /* closing the sheet is not an error */
     });
