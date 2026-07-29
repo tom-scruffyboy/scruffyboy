@@ -1,5 +1,24 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (evening) — intake 1 LIVE: roster published, acceptances sent, real photos
+
+- [x] **Ten field testers published to the roster** (Tom: accept all with photos):
+  ralph 002, onyx 003, riggs 004, eddie 005, stella 006, missy 007, lila 008,
+  monty 009, mille 010, mim 011 — each card anchored (/the-department#name) for
+  deep links from socials. Counts updated site-wide: 11 of 20 filled, 9 left.
+- [x] **Acceptance campaign SENT** (Klaviyo campaign "testing department — acceptance
+  (intake 1)", list Vfsyki, template Ywny24, from hello@): personalised "hired." email
+  with dog_name, what-happens-next (kits in development, address requested when ready,
+  intro post coming), and the send-more-content ask. The 7 not-yet-confirmed owners
+  were unsuppressed first (suppression = pending double opt-in; acceptance is an
+  expected reply to their application).
+- [x] **Real photos replace AI where Tom supplied them:** real Moose on his roster card
+  (roster-moose.webp), jungle shot on the-department hero, Moose + Kobe rain shot on
+  the testing-department hero, soaked close-up on meet-moose hero (preload updated).
+  CLAUDE.md imagery note amended: prefer real photos when Tom supplies them.
+- Pending: photo-request email to BEAU (Vanessa) + the Cornwall four (Ann) — drafted,
+  awaiting Tom's go; Claude Design prompt handed over in chat for the intro posts.
+
 ## 29 Jul (later still) — roster nav, moose breed, fast lane page, roster intake prep (Tom's asks)
 
 - [x] **Roster reachable from the department page:** hero now has [apply now] + [meet

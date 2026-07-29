@@ -49,6 +49,9 @@ surfaces (Cowork, Code, Design): https://app.notion.com/p/3a06408d1af681658e4cc6
   Design, shipped via Claude Code. Imagery in `assets/` (moose-*, cut-*, photo-*, act*,
   step-*) is **AI-generated concept art**, an explicit Tom decision (overrides the "Moose
   is a real dog" default for the pre-launch teaser — confirm before assuming for future work).
+  EXCEPTIONS (29 Jul): `roster-*.webp` are real applicant photos, and `roster-moose.webp`,
+  `moose-jungle.webp`, `moose-kobe-rain.webp`, `moose-kobe-wet.webp` are real photos of
+  Moose (apricot goldendoodle) and Kobe — prefer real photos over AI when Tom supplies them.
 - `js/hero.js` (v3, defer, every page): hero parallax, lineup scrollytelling, before/after
   slider, IntersectionObserver reveals. All gated behind `prefers-reduced-motion`.
 - ⚠️ **The Claude Design handoff bundles a `js/signup.js` PREVIEW SHIM that captures nothing**
