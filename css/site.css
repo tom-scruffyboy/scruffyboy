@@ -1,5 +1,9 @@
 /* scruffyboy — site styles. tokens carried verbatim from the design system. */
 
+/* overscroll canvas: iOS rubber-banding shows the html background, which
+   defaults to white. Cream keeps the bounce on-brand on every page. */
+html { background: #F7F0E1; }
+
 /* the hidden attribute always wins, even over display rules on .btn etc. */
 [hidden] { display: none !important; }
 
