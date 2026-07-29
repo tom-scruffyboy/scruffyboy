@@ -208,3 +208,29 @@ Verified working 27 Jul: two branded confirmations delivered, then suppression k
   blocks (only bold/italic/lists/image), so /confirmed cannot be reached from the
   confirm click. If Klaviyo ever adds a success-page redirect, point it at
   https://scruffyboy.com/confirmed (the page carries the full native-share module).
+
+## 29 Jul — referral phase 1 (the machine behind the share moment)
+
+- **Key is now v3** ("scruffyboy site backend v3 profiles events subscriptions":
+  Events + List + Profiles + Subscriptions, all Full). The v2 key 403'd on
+  profile-subscription-bulk-create-jobs (no Subscriptions scope). v2 should be
+  deleted once Tom confirms nothing else uses it.
+- **Signups now flow through /api/subscribe** (server-side subscribe with the private
+  key). The client-side public-key subscribe in signup.js is GONE — the double-opt-in
+  confirmation email still sends exactly as before.
+- **Profile properties:** referral_code, referral_url, referred_by (set at signup),
+  queue_position, referral_count (set on confirm by /api/confirm-referral).
+  Authoritative counters live in Upstash Redis (Vercel store "scruffyboy-referrals"),
+  NOT in Klaviyo — profile properties are display copies.
+- **Flow "referral milestones" (R2feR8), LIVE:** metric trigger Referred Signup
+  Confirmed, filter count = 3|5|10|25 (OR), allow re-entry, Smart Sending off. One
+  email with {% if event.count %} branches for the four reward tiers. Edited via the
+  flow code editor (same Ace rules as ever: green toast, entities).
+- **PENDING — welcome-flow webhook (needs Tom's MFA):** Klaviyo blocks webhook actions
+  until the account has MFA. After Tom enables it: welcome flow (Rwn4mS) → add Webhook
+  action BEFORE welcome 1 → POST https://scruffyboy.com/api/confirm-referral with
+  header x-scruffyboy-secret (value = Vercel env REFERRAL_WEBHOOK_SECRET) and body
+  {"email":"{{ person.email }}","referred_by":"{{ person|lookup:'referred_by'|default:'' }}"}.
+  Until that exists, run confirms manually (curl, same header) for new confirmed members.
+- **Queue positions 1–6 seeded** for the pre-existing confirmed members in join order.
+  Positions only ever come from /api/confirm-referral (Redis INCR) — never hand-set.

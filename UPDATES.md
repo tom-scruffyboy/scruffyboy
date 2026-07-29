@@ -1,5 +1,45 @@
 # scruffyboy site — open update requests
 
+## 29 Jul — referral phase 1 BUILT: codes, count-on-confirm, queue (Tom: "let's go ahead and build it")
+
+The §5 DIY build from the Referral Proposal. All deployed and tested except one item
+blocked on Tom (below).
+- [x] **Backend (commit cde3249):** `api/subscribe.js` (signup now goes through our
+  server: stable 7-char referral code per email, referral_code/referral_url/referred_by
+  written to the Klaviyo profile, disposable-email blocklist, 20/hr/IP rate limit, then
+  the normal double-opt-in list subscribe server-side), `api/confirm-referral.js`
+  (secret-authed webhook target: atomic queue position via Redis INCR, credits the
+  referrer once per confirmed friend, 50-cap, fires "Referred Signup Confirmed" event),
+  `api/position.js` (position + confirmed-referral count for the pages),
+  `lib/redis.js` (Upstash REST, no new deps).
+- [x] **Infra:** Upstash for Redis "scruffyboy-referrals" (free tier, iad1, eviction
+  off) created via Vercel Marketplace (Tom approved the ToS) and connected to
+  scruffyboy-site; REFERRAL_WEBHOOK_SECRET env var added. Klaviyo key rotated to
+  **v3** (Events + List + Profiles + Subscriptions — v2 lacked the Subscriptions scope
+  the server-side subscribe needs; found via a 403 in Vercel logs).
+- [x] **Client:** hero.js captures ?ref= into a 60-day cookie on every page; signup.js
+  posts both forms through /api/subscribe (keeps GA4/Meta events + double opt-in);
+  share.js shares the PERSONAL ?ref= link when the device has one and renders the real
+  queue position on /confirmed; share subs on thanks/confirmed now carry the honest
+  scheme line ("every friend who joins and clicks their confirm email moves you up").
+- [x] **Tested end-to-end on production:** subscribe → code issued; friend subscribe
+  with ref → confirm webhook → position assigned + referrer credited exactly once
+  (idempotent, 401 on bad secret). Queue seeded with the 6 real confirmed members in
+  join order (te+scruffyfinal 1, Tom 2, Vanessa 3, Diana 4, Bianca 5, Koha 6);
+  test artifacts wiped from Redis first.
+- [x] **Klaviyo "referral milestones" flow (R2feR8), LIVE:** trigger = Referred Signup
+  Confirmed with filter count = 3|5|10|25, allow re-entry, Smart Sending OFF; one email
+  ("your dog just got promoted up the list.") with conditional copy per tier from the
+  approved reward ladder, personal referral link included. Built on the welcome-1 shell.
+- [ ] **BLOCKED on Tom — the last wire:** Klaviyo requires account MFA before ANY flow
+  webhook action can be added. Until then referrals/positions only count when we run
+  the confirm manually. Tom: Klaviyo → Settings → Security → set up MFA, then next
+  session adds the Webhook action at the TOP of the welcome flow (before welcome 1):
+  POST https://scruffyboy.com/api/confirm-referral, header x-scruffyboy-secret =
+  (Vercel env REFERRAL_WEBHOOK_SECRET), body
+  {"email":"{{ person.email }}","referred_by":"{{ person|lookup:'referred_by'|default:'' }}"}.
+- Test profiles from this build: te+ref-test1/2 (delete whenever).
+
 ## 28 Jul — referral phase 0: the share moment (Tom's ask, from the Referral Proposal v1.0 §3 + §7)
 
 - [x] **thanks.html rebuilt around the confirm ask.** H1 is now "check your inbox." with
