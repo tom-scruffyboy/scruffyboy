@@ -1,5 +1,27 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (later still) — roster nav, moose breed, fast lane page, roster intake prep (Tom's asks)
+
+- [x] **Roster reachable from the department page:** hero now has [apply now] + [meet
+  the roster] buttons; "the fast lane" added to key footers.
+- [x] **Moose is an apricot goldendoodle** (was "red cockapoo") — fixed on the roster
+  card, meet-moose metas + body, homepage alt text, and the curly-coat guide.
+- [x] **Referral program surfaced:** new homepage section ("the list has a fast lane.")
+  with the four reward rungs + CTAs, and a full detail page at **/referral** — how it
+  works, the ladder, share buttons (personal link when the device has one), signup form,
+  honest fine print. In sitemap; linked from thanks/confirmed share sections.
+- [x] **Overscroll fix (Tom's catch: white space below the check-your-inbox page):**
+  couldn't reproduce a layout gap on desktop or mobile emulation — footer sits flush —
+  but iOS rubber-band scrolling shows the page canvas, which defaulted to WHITE below
+  the dark footer. html{background:cream} now keeps the bounce on-brand site-wide; also
+  removed the arbitrary min-height on thanks. If Tom still sees a gap, need a screenshot
+  + device.
+- [x] **Roster intake 1 prepared** (12 real applications now, 10 with photos): proposal
+  of 6 (Ralph, Eddie, Stella, Mille, Mim, Onyx) + alternates, acceptance-email draft,
+  website-update plan (anchored cards → /the-department#name), and all candidate
+  imagery staged for Claude Design in Notion: "roster intake 1 — candidates, imagery +
+  intro posts" under the Ops Hub. Nothing published or sent until Tom picks.
+
 ## 29 Jul (later) — share-to-WhatsApp fix (Tom's catch)
 
 Tom: the WhatsApp share wasn't carrying the message. Verified all three paths:
