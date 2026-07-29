@@ -31,13 +31,12 @@ blocked on Tom (below).
   Confirmed with filter count = 3|5|10|25, allow re-entry, Smart Sending OFF; one email
   ("your dog just got promoted up the list.") with conditional copy per tier from the
   approved reward ladder, personal referral link included. Built on the welcome-1 shell.
-- [ ] **BLOCKED on Tom — the last wire:** Klaviyo requires account MFA before ANY flow
-  webhook action can be added. Until then referrals/positions only count when we run
-  the confirm manually. Tom: Klaviyo → Settings → Security → set up MFA, then next
-  session adds the Webhook action at the TOP of the welcome flow (before welcome 1):
-  POST https://scruffyboy.com/api/confirm-referral, header x-scruffyboy-secret =
-  (Vercel env REFERRAL_WEBHOOK_SECRET), body
-  {"email":"{{ person.email }}","referred_by":"{{ person|lookup:'referred_by'|default:'' }}"}.
+- [x] **The last wire (29 Jul, after Tom enabled MFA):** Webhook action "confirm
+  referral → scruffyboy.com" added at the TOP of the welcome flow (before welcome 1),
+  LIVE. POST /api/confirm-referral with the shared-secret header; body carries email +
+  referred_by. Proven end-to-end in production: a test list-join fired the flow →
+  webhook → position 7 assigned + referrer credited automatically. The loop is closed;
+  test member removed from the list after.
 - Test profiles from this build: te+ref-test1/2 (delete whenever).
 
 ## 28 Jul — referral phase 0: the share moment (Tom's ask, from the Referral Proposal v1.0 §3 + §7)
