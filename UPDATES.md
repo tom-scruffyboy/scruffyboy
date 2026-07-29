@@ -1,5 +1,17 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (late night) — mobile hamburger + the missing hero bottles (Tom's catches)
+
+- [x] **Mobile hamburger nav shipped.** Injected by hero.js on all 40 pages that carry
+  the main nav (one place to maintain): pill burger button beside the CTA under 720px,
+  cream dropdown panel with the four Fredoka nav links, animated to an X when open,
+  closes on link tap / outside tap / Escape. aria-expanded wired.
+- [x] **Mobile hero product imagery was invisible (real bug, Tom's catch).** The
+  design intends a static two-bottle row under the hero copy on mobile, but the
+  desktop anchor margins (~330px each) survived into the flex row and flex-shrink
+  crushed both bottles to zero width. Fixed with margin:0 + flex-shrink:0 in the
+  mobile block. Verified: bottles now render as a 528px row at 375px wide.
+
 ## 29 Jul (night) — full site review: performance + design system (Tom's ask)
 
 Measured and swept every page. Verdict: healthy. Fixed in the pass:
