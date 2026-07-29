@@ -1,5 +1,16 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (later) — share-to-WhatsApp fix (Tom's catch)
+
+Tom: the WhatsApp share wasn't carrying the message. Verified all three paths:
+- wa.me fallback button (site): worked — full prefill including personal ref link.
+- Email "send it on whatsapp" links: worked — Klaviyo click-tracking redirect
+  preserves the full text (verified through the ctrk redirect chain).
+- **Native "share the list" button: BROKEN for WhatsApp** — navigator.share with
+  separate {text, url} makes the Apple share sheet hand WhatsApp only the url; the
+  message is dropped. Fixed (commit bf5e4a6): share a single merged text payload
+  (message + link in one string). Verified live.
+
 ## 29 Jul — referral phase 1 BUILT: codes, count-on-confirm, queue (Tom: "let's go ahead and build it")
 
 The §5 DIY build from the Referral Proposal. All deployed and tested except one item
