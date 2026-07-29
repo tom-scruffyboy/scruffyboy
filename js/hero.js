@@ -118,3 +118,33 @@
       ';max-age=' + 60 * 24 * 3600 + ';path=/;SameSite=Lax';
   } catch (e) { /* never break a page over a cookie */ }
 })();
+
+
+/* Mobile hamburger nav: injected on every page that carries the main nav,
+   so the 40-odd pages stay in sync from one place. */
+(function () {
+  var header = document.querySelector('.site-header');
+  var nav = header && header.querySelector('nav.main');
+  if (!header || !nav) return;
+  var btn = document.createElement('button');
+  btn.className = 'nav-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  var panel = document.createElement('nav');
+  panel.className = 'mobile-nav';
+  panel.setAttribute('aria-label', 'mobile');
+  nav.querySelectorAll('a').forEach(function (a) { panel.appendChild(a.cloneNode(true)); });
+  var right = header.querySelector('.bar .right');
+  (right || header.querySelector('.bar')).appendChild(btn);
+  header.appendChild(panel);
+  function setOpen(open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    panel.classList.toggle('open', open);
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(btn.getAttribute('aria-expanded') !== 'true'); });
+  panel.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  document.addEventListener('click', function (e) { if (!header.contains(e.target)) setOpen(false); });
+})();

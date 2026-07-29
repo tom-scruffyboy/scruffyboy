@@ -116,6 +116,32 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .site-header .bar .right { display: flex; gap: var(--space-4); align-items: center; }
 @media (max-width: 720px){ .site-header nav.main { display: none; } }
 
+/* ---------- mobile nav (hamburger, injected by hero.js) ---------- */
+.nav-toggle { display: none; }
+.mobile-nav { display: none; }
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 4px;
+    width: 42px; height: 42px; padding: 0 11px; flex-shrink: 0;
+    background: transparent; border: 1.5px solid var(--black); border-radius: var(--radius-pill); cursor: pointer;
+  }
+  .nav-toggle span { display: block; height: 2px; width: 100%; background: var(--black); border-radius: 2px; transition: transform 160ms ease-out, opacity 120ms ease-out; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-nav {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 49;
+    background: var(--surface-page); border-bottom: 1px solid var(--border-hairline);
+    padding: 6px 0 14px; box-shadow: 0 14px 24px rgba(22, 19, 16, 0.06);
+  }
+  .mobile-nav.open { display: block; }
+  .mobile-nav a {
+    display: block; padding: 13px clamp(20px, 4vw, 48px);
+    font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--black); text-decoration: none;
+  }
+  .mobile-nav a:hover { color: var(--orange-deep); text-decoration: none; }
+}
+
 /* ---------- buttons ---------- */
 .btn {
   display: inline-block; border: 0; cursor: pointer;
@@ -430,7 +456,9 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 @media (max-width: 640px) {
   .hero-stage { padding-bottom: 40px; }
   .float-layer { position: static; display: flex; justify-content: center; gap: clamp(24px, 8vw, 56px); margin-top: 40px; }
-  .fp, .fp-foam, .fp-bath { position: static; width: 34vw; max-width: 150px; }
+  /* margin: 0 is load-bearing: the desktop anchor margins (~330px) otherwise
+     survive into this flex row and flex-shrink crushes both bottles to 0. */
+  .fp, .fp-foam, .fp-bath { position: static; width: 34vw; max-width: 150px; margin: 0; flex-shrink: 0; translate: none; }
   .fp-tag { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
