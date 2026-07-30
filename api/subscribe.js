@@ -105,7 +105,9 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const referralUrl = code ? 'https://scruffyboy.com/?ref=' + code : '';
+  // Referral links land on /referral (the fast lane page), which explains the
+  // scheme. The homepage still honours ?ref= too, so old links keep crediting.
+  const referralUrl = code ? 'https://scruffyboy.com/referral?ref=' + code : '';
   const properties = { signup_page: clean(b.page, 200) || '/' };
   if (code) {
     properties.referral_code = code;

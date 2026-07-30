@@ -8,7 +8,8 @@
   var SHARE_URL = 'https://scruffyboy.com/';
   try {
     var mine = localStorage.getItem('sb_url');
-    if (mine && /^https:\/\/scruffyboy\.com\/\?ref=[a-z0-9]{4,20}$/.test(mine)) SHARE_URL = mine;
+    /* accept both link formats: the old /?ref= and the current /referral?ref= */
+    if (mine && /^https:\/\/scruffyboy\.com\/(referral)?\?ref=[a-z0-9]{4,20}$/.test(mine)) SHARE_URL = mine;
   } catch (e) { /* private mode */ }
   var SHARE_TEXT = 'my dog is on a waiting list for grooming stuff that actually works after a hike. yours can queue too:';
 
