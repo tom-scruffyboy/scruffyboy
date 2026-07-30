@@ -169,7 +169,6 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 @media (max-width: 720px) {
   .hero .grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .hero .photo img { aspect-ratio: 4 / 3; }
-  .moose .grid { grid-template-columns: 1fr; gap: var(--space-6); }
 }
 
 /* ---------- signup form ---------- */
@@ -272,6 +271,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 .moose .photo img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
 .moose p + p { margin-top: var(--space-4); }
 .moose .grid > div > p:first-of-type { margin-top: var(--space-4); }
+@media (max-width: 720px) { .moose .grid { grid-template-columns: 1fr; gap: var(--space-6); } }
 
 /* faq */
 .faq { max-width: 720px; }
