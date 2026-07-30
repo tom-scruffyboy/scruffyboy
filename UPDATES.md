@@ -1,5 +1,22 @@
 # scruffyboy site — open update requests
 
+## 29 Jul (mobile pass) — squashed pages fixed across the site (Tom's catch)
+
+Audited every page type at 375px with an automated probe (horizontal overflow +
+squashed grid detector) plus visual passes.
+- [x] **Root cause of the squashing:** `.hero .grid` (the standard text+photo hero on
+  testing-department, the-department, meet-moose, the-kit) and `.moose .grid`
+  (homepage) had NO mobile collapse rule, so at phone width the copy column crushed
+  to ~170px beside a ~140px photo. Both now stack to one column under 720px; hero
+  photos take a 4/3 crop when full-width. (First attempt at the moose rule lost the
+  cascade to its later base rule; moved below it.)
+- [x] Verified at 375px after fix: testing-department (hero, job-meta card, kit stack,
+  application form), the-department (hero + 2-col roster wall with photos), homepage
+  moose section, referral. No horizontal overflow anywhere; marquee is the one
+  intentional wide element.
+- Already healthy, confirmed: .split/.range/.steps/.pains/.jobad/.appform collapse
+  rules from the design system; guides hub auto-fit; fieldnotes' 2-col is by design.
+
 ## 29 Jul (last one) — email WhatsApp links skip click tracking (Tom's catch)
 
 - [x] wa.me only deep-links into the WhatsApp app (message intact) on a DIRECT tap;
