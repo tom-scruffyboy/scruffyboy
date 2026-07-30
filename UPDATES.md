@@ -1,5 +1,27 @@
 # scruffyboy site — open update requests
 
+## 30 Jul — referral links now land on /referral (Tom's ask)
+
+- [x] **api/subscribe.js** mints referral_url as https://scruffyboy.com/referral?ref=CODE
+  (was the bare homepage). The fast lane page explains the scheme, so it is the landing
+  spot for a friend's link.
+- [x] **share.js personal-link check widened** to accept BOTH formats; without this,
+  new-format links would have silently failed validation and shares would have fallen
+  back to the bare homepage.
+- [x] **Attribution + backcompat verified, no porting needed:** the ?ref= cookie capture
+  in hero.js is page-agnostic (runs on /referral and everywhere else), and old /?ref=
+  links keep crediting because every page captures the param. No redirect required.
+- [x] **18 existing profiles migrated** so their stored referral_url (used by the
+  milestone email) points at /referral too. Notable: ~10 of those were fresh REAL
+  signups with codes, the loop is being used.
+- [x] **E2E on production:** new referrer minted /referral?ref= link; friend visited it
+  (cookie captured on /referral), signed up through the referral page's own form
+  (referred_by recorded, signup_page /referral), confirm simulated, referrer credited,
+  friend got queue position 14 (queue has grown with real confirms). Test artifacts
+  cleaned from list + Redis; queue counter left untouched with real traffic in flight,
+  so position 14 is a burned gap, which is fine because positions are ordinal.
+- Test profiles te+ref-newurl-a/b marked deletable.
+
 ## 29 Jul (mobile pass) — squashed pages fixed across the site (Tom's catch)
 
 Audited every page type at 375px with an automated probe (horizontal overflow +
